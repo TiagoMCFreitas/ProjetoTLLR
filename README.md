@@ -1,5 +1,6 @@
-# ProjetoTllr (Locação de carros)
+# ProjetoTllr (Locação de carros)🚘
  Projeto desenvolvido por:<br>
- Tiago Mendonça Carvalho Freitas <br>
- Lucca Lopes<br>
- Lucca Ribeiro<br>
+ Tiago Mendonça Carvalho Freitas✅ <br>
+ Lucca Lopes✅<br>
+ Lucca Ribeiro✅<br>
+Projeto pode ser baixado: ProjetoParaBaixar ♻
