@@ -40,10 +40,29 @@ public class MarcaDao implements IMarcaDao{
          throw erro;
       }
     }
-
+    
+    
     @Override
     public void alterar(Marca objeto) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        FileReader fr = new FileReader(nomeDoArquivoNoDisco);
+        BufferedReader br  = new BufferedReader(fr);
+        String banco="";
+        String linha ="";
+        while((linha = br.readLine())!= null){
+            if(linha.contains(objeto.getId()+"")){
+               banco+=objeto.getId() + ";" + objeto.getDescricao()+ ";" + objeto.getUrl() + "\n";
+               
+            }
+            else{
+            banco += linha + "\n";
+            }
+        }
+        br.close();
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
+        BufferedWriter bw =  new BufferedWriter(fw);
+        bw.write(banco);
+        bw.close();
+
     }
 
     @Override

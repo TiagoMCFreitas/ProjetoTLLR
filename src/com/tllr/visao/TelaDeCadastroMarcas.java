@@ -8,11 +8,14 @@ import com.tllr.controle.IMarcaControle;
 import com.tllr.controle.MarcaControle;
 import com.tllr.imagensnatabela.JTableRenderer;
 import com.tllr.modelos.Marca;
+import com.tllr.persistencia.MarcaDao;
 import java.io.File;
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -75,7 +78,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabelBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/botão buscar normal.png"))); // NOI18N
+        jLabelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao buscar normal.png"))); // NOI18N
         jLabelBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -110,7 +113,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabel3.setText("Descrição");
 
         jLabelIncluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/botão incluir normal.png"))); // NOI18N
+        jLabelIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao incluir normal.png"))); // NOI18N
         jLabelIncluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelIncluir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -137,7 +140,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BordaLuccaFDO.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/BordaLuccaFDO.png"))); // NOI18N
 
         jLabelLogo.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -171,7 +174,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/designed2.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/designed2.png"))); // NOI18N
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
@@ -203,10 +206,10 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("BOTÃO ATUALIZAR");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BordaLuccaFDO2.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/BordaLuccaFDO2.png"))); // NOI18N
 
         jLabelAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/botão alterar normal.png"))); // NOI18N
+        jLabelAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao atualizar normal.png"))); // NOI18N
         jLabelAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelAlterar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -230,9 +233,16 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelIncluir)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelIncluir)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelAlterar))
                             .addComponent(jLabel5)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,23 +255,14 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                             .addComponent(jTextFieldUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(318, 318, 318)
-                                .addComponent(jLabel7))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(144, 144, 144)
+                                .addGap(168, 168, 168)
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(203, 203, 203)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAlterar))
-                        .addGap(120, 120, 120)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(283, 283, 283)
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(233, 233, 233)
+                                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel10)
@@ -271,6 +272,10 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(716, 716, 716)
+                .addComponent(jLabelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,36 +289,43 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jTextFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabelIncluir)
+                                            .addComponent(jLabelAlterar))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(67, 67, 67)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addGap(51, 51, 51)))
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(61, 61, 61))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jLabelIncluir)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelAlterar)
-                        .addGap(13, 13, 13)))
+                                .addGap(15, 15, 15)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
@@ -330,9 +342,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -368,12 +378,12 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
 
     }
     private void jLabelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBuscarMouseClicked
-         ImageIcon iconeBuscarMouse = new ImageIcon("Image/botaobuscarclicado.png");
+         ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscarclicado.png");
         jLabelBuscar.setIcon(iconeBuscarMouse);    
         try {
             
-            JFileChooser fc = new JFileChooser("./src/imagesLogo");
-            File workingDirectory = new File("./src/imagesLogo");
+            JFileChooser fc = new JFileChooser("./src/Imagens/imagesLogo");
+            File workingDirectory = new File("./src/Imagens/imagesLogo");
             fc.setCurrentDirectory(workingDirectory);
             fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fc.showOpenDialog(this);
@@ -383,7 +393,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
             ImageIcon iconLogo = new ImageIcon(nomeDoArquivo);
             jLabelLogo.setIcon(iconLogo);
         } catch (Exception erro) {
-            JOptionPane.showMessageDialog(this, erro);
+            JOptionPane.showMessageDialog(this,"Nenhum arquivo selecionado");
         }
 
     }//GEN-LAST:event_jLabelBuscarMouseClicked
@@ -416,10 +426,11 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableMarcasMouseClicked
 
     private void jLabelIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIncluirMouseClicked
-        ImageIcon iconlogo = new ImageIcon("Image/botaoincluirclicado.png");
+        ImageIcon iconlogo = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirclicado.png");
         jLabelIncluir.setIcon(iconlogo);
         try {
             Marca objeto = new Marca(0, jTextFieldDescricao.getText(), jTextFieldUrl.getText());
+            marcaControle.nada(objeto);
             marcaControle.incluir(objeto);
             jTextFieldDescricao.setText("");
             imprimirDadosNaGrid(marcaControle.listagem());
@@ -429,42 +440,51 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabelIncluirMouseClicked
 
     private void jLabelIncluirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIncluirMouseMoved
-        ImageIcon iconeIncluirMouse = new ImageIcon("Image/botaoincluirencima.png");
+        ImageIcon iconeIncluirMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirencima.png");
         jLabelIncluir.setIcon(iconeIncluirMouse);
 
 
     }//GEN-LAST:event_jLabelIncluirMouseMoved
 
     private void jLabelIncluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIncluirMouseExited
-        ImageIcon iconeIncluirMouse = new ImageIcon("Image/botaoincluir.png");
+        ImageIcon iconeIncluirMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluir.png");
         jLabelIncluir.setIcon(iconeIncluirMouse);
 
     }//GEN-LAST:event_jLabelIncluirMouseExited
 
     private void jLabelBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBuscarMouseMoved
-         ImageIcon iconeBuscarMouse = new ImageIcon("Image/botaobuscarencima.png");
+         ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscarencima.png");
         jLabelBuscar.setIcon(iconeBuscarMouse);       
     }//GEN-LAST:event_jLabelBuscarMouseMoved
 
     private void jLabelBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBuscarMouseExited
-        ImageIcon iconeBuscarMouse = new ImageIcon("Image/botaobuscar.png");
+        ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscar.png");
         jLabelBuscar.setIcon(iconeBuscarMouse);       
 
     }//GEN-LAST:event_jLabelBuscarMouseExited
 
     private void jLabelAlterarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseMoved
-        ImageIcon iconeAlterarMouse = new ImageIcon("Image/botaoalterarencima.png");
+        ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoatualizarencima.png");
         jLabelAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelAlterarMouseMoved
 
     private void jLabelAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseExited
-       ImageIcon iconeAlterarMouse = new ImageIcon("Image/botaoalterar.png");
+       ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoatualizar.png");
         jLabelAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelAlterarMouseExited
 
     private void jLabelAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseClicked
-        ImageIcon iconeAlterarMouse = new ImageIcon("Image/botaoalterarclicado.png");
-        jLabelAlterar.setIcon(iconeAlterarMouse);
+            try {
+                ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoatualizarclicado.png");
+                jLabelAlterar.setIcon(iconeAlterarMouse);
+                Marca objetoAlterar = new Marca(Integer.parseInt(jTextFieldIdentificador.getText()), jTextFieldDescricao.getText(), jTextFieldUrl.getText());
+                marcaControle.alterar(objetoAlterar);
+                imprimirDadosNaGrid(marcaControle.listagem());
+            } catch (Exception ex) {
+
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+    
     }//GEN-LAST:event_jLabelAlterarMouseClicked
     
 
