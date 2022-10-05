@@ -44,7 +44,7 @@ public class Marca implements Comparable<Marca>{
     }
     @Override
     public String toString() {
-        return id + ";" + descricao + ";" + url + ";" + url + ";";
+        return id + ";" + descricao + ";" + url;
     }
 
     @Override
