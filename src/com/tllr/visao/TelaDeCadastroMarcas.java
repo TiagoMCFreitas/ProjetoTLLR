@@ -114,7 +114,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
 
         jLabelIncluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao incluir normal.png"))); // NOI18N
-        jLabelIncluir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelIncluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabelIncluir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 jLabelIncluirMouseMoved(evt);
@@ -210,7 +210,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/BordaLuccaFDO2.png"))); // NOI18N
 
         jLabelAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao atualizar normal.png"))); // NOI18N
+        jLabelAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botaoalterar.png"))); // NOI18N
         jLabelAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelAlterar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -385,11 +385,12 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
             JFileChooser fc = new JFileChooser("./src/Imagens/imagesLogo");
             File workingDirectory = new File("./src/Imagens/imagesLogo");
             fc.setCurrentDirectory(workingDirectory);
-            
             fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fc.showOpenDialog(this);
-            jTextFieldUrl.setText("./src/Imagens/imagesLogo");
-            ImageIcon iconLogo = new ImageIcon("./src/Imagens/imagesLogo");
+            File arquivo = fc.getSelectedFile();
+            String nomeDoArquivo = arquivo.getPath();
+            jTextFieldUrl.setText(nomeDoArquivo);
+            ImageIcon iconLogo = new ImageIcon(nomeDoArquivo);
             jLabelLogo.setIcon(iconLogo);
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this,"Nenhum arquivo selecionado");
@@ -463,18 +464,18 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabelBuscarMouseExited
 
     private void jLabelAlterarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseMoved
-        ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoatualizarencima.png");
+        ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarencima.png");
         jLabelAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelAlterarMouseMoved
 
     private void jLabelAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseExited
-       ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoatualizar.png");
+       ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterar.png");
         jLabelAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelAlterarMouseExited
 
     private void jLabelAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseClicked
             try {
-                ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoatualizarclicado.png");
+                ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarclicado.png");
                 jLabelAlterar.setIcon(iconeAlterarMouse);
                 Marca objetoAlterar = new Marca(Integer.parseInt(jTextFieldIdentificador.getText()), jTextFieldDescricao.getText(), jTextFieldUrl.getText());
                 marcaControle.alterar(objetoAlterar);

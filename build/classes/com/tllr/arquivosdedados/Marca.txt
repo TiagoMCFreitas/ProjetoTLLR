@@ -1,10 +1,3 @@
-1;MERCEDES;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\mercedez.png
-2;FIAT;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\fiat.png
-3;PEUGEOT;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\peugeot.png
-4;JEEP;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\jeep.png
-5;FORD;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\ford.png
-6;CHEVROLET;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\chevrolet.png
-7;GMC;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\gmc.png
-8;AUDI;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\audi.png
-9;HYUNDAI;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\hyundai.png
-10;LANDROVER;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\landrover.png
+1;FIAT;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\fiat.png
+2;MERCEDEZ;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\mercedez.png
+3;JEEP;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\jeep.png

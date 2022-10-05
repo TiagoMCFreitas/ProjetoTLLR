@@ -15,7 +15,7 @@ public class CentralDeTelas extends javax.swing.JFrame {
      */
     public CentralDeTelas() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -46,17 +46,17 @@ public class CentralDeTelas extends javax.swing.JFrame {
         Painel.setLayout(PainelLayout);
         PainelLayout.setHorizontalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelLayout.createSequentialGroup()
-                .addGap(278, 278, 278)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
+                .addContainerGap(546, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(370, Short.MAX_VALUE))
+                .addGap(102, 102, 102))
         );
         PainelLayout.setVerticalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelLayout.createSequentialGroup()
-                .addGap(381, 381, 381)
+                .addGap(317, 317, 317)
                 .addComponent(jLabel2)
-                .addContainerGap(394, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
 
         desktopPane.add(Painel);
@@ -112,16 +112,12 @@ public class CentralDeTelas extends javax.swing.JFrame {
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void CadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastroActionPerformed
-        TelaDeCadastroMarcas chamar = new TelaDeCadastroMarcas();
-        Painel.add(chamar);
-        chamar.setVisible(true);
+        
         
     }//GEN-LAST:event_CadastroActionPerformed
 
     private void openMenuItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openMenuItemMouseClicked
-        TelaDeCadastroMarcas chamar = new TelaDeCadastroMarcas();
-        Painel.add(chamar);
-        chamar.setVisible(true);
+        
 
     }//GEN-LAST:event_openMenuItemMouseClicked
 
