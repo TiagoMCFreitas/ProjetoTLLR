@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/Users/Patricia/Documents/NetBeansProjects/ProjetoTllr/src/com/tllr/visao/TelaDeCadastroMarcas.java</file>
             <file>file:/C:/Users/Patricia/Documents/NetBeansProjects/ProjetoTllr/src/com/tllr/persistencia/MarcaDao.java</file>
             <file>file:/C:/Users/Patricia/Documents/NetBeansProjects/ProjetoTllr/src/com/tllr/arquivosdedados/Marca.txt</file>
@@ -14,6 +15,10 @@
             <file>file:/C:/Users/Patricia/Documents/NetBeansProjects/ProjetoTllr/src/com/tllr/controle/MarcaControle.java</file>
             <file>file:/C:/Users/Patricia/Documents/NetBeansProjects/ProjetoTllr/src/com/tllr/ferramentas/GeradorIdentificador.java</file>
             <file>file:/C:/Users/Patricia/Documents/NetBeansProjects/ProjetoTllr/src/com/tllr/persistencia/IMarcaDao.java</file>
+=======
+            <file>file:/C:/Users/tiago/OneDrive/Documentos/NetBeansProjects/ProjetoTllr/src/com/tllr/visao/TelaDeCadastroMarcas.java</file>
+            <file>file:/C:/Users/tiago/OneDrive/Documentos/NetBeansProjects/ProjetoTllr/src/com/tllr/visao/CentralDeTelas.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>

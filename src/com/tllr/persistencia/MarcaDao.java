@@ -44,25 +44,20 @@ public class MarcaDao implements IMarcaDao{
     
     @Override
     public void alterar(Marca objeto) throws Exception {
-        FileReader fr = new FileReader(nomeDoArquivoNoDisco);
-        BufferedReader br  = new BufferedReader(fr);
-        String banco="";
-        String linha ="";
-        while((linha = br.readLine())!= null){
-            if(linha.contains(objeto.getId()+"")){
-               banco+=objeto.getId() + ";" + objeto.getDescricao()+ ";" + objeto.getUrl() + "\n";
-               
+        ArrayList<Marca> lista = listagem();
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        for(int i = 0; i < lista.size();i++){
+            if(objeto.getId() == lista.get(i).getId()){
+                bw.write(objeto.toString()+"\n");
             }
             else{
-            banco += linha + "\n";
+                bw.write(lista.get(i).toString()+ "\n");
             }
         }
-        br.close();
-        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
-        BufferedWriter bw =  new BufferedWriter(fw);
-        bw.write(banco);
         bw.close();
-
+        
     }
 
     @Override

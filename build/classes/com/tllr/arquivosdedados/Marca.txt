@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 1;MERCEDES;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\mercedez.png
 2;FIAT;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\fiat.png
 3;PEUGEOT;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\peugeot.png
@@ -8,3 +9,6 @@
 8;AUDI;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\audi.png
 9;HYUNDAI;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\hyundai.png
 10;LANDROVER;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\landrover.png
+=======
+1;FIAT;C:\Users\tiago\OneDrive\Documentos\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\fiat.png
+>>>>>>> Stashed changes
