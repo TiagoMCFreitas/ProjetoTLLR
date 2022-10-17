@@ -8,14 +8,11 @@ import com.tllr.controle.IMarcaControle;
 import com.tllr.controle.MarcaControle;
 import com.tllr.imagensnatabela.JTableRenderer;
 import com.tllr.modelos.Marca;
-import com.tllr.persistencia.MarcaDao;
+import java.awt.Cursor;
 import java.io.File;
-import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -35,6 +32,8 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         initComponents();
         jTextFieldIdentificador.setEnabled(false);
         jTextFieldUrl.setEnabled(false);
+               setBounds(0,0,920,600);
+
         try {
             imprimirDadosNaGrid(marcaControle.listagem());
         } catch (Exception erro) {
@@ -53,53 +52,67 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabelBuscar = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanelfundo = new javax.swing.JPanel();
+        jLabelBotaoBuscar = new javax.swing.JLabel();
+        jLabelIdentificador = new javax.swing.JLabel();
         jTextFieldIdentificador = new javax.swing.JTextField();
         jTextFieldDescricao = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabelIncluir = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelDescricao = new javax.swing.JLabel();
+        jLabelBotaoIncluir = new javax.swing.JLabel();
+        jLabelUrl = new javax.swing.JLabel();
         jTextFieldUrl = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         jLabelLogo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMarcas = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jPanelTopo = new javax.swing.JPanel();
+        jLabelEmpresa = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabelAlterar = new javax.swing.JLabel();
+        jLabelBotaoAlterar = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelLogo1 = new javax.swing.JLabel();
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        getContentPane().setLayout(null);
 
-        jLabelBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao buscar normal.png"))); // NOI18N
-        jLabelBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jPanelfundo.setBackground(new java.awt.Color(153, 153, 153));
+        jPanelfundo.setLayout(null);
+
+        jLabelBotaoBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelBotaoBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao buscar normal.png"))); // NOI18N
+        jLabelBotaoBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelBotaoBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jLabelBuscarMouseMoved(evt);
+                jLabelBotaoBuscarMouseMoved(evt);
             }
         });
-        jLabelBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelBotaoBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelBuscarMouseClicked(evt);
+                jLabelBotaoBuscarMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelBuscarMouseExited(evt);
+                jLabelBotaoBuscarMouseExited(evt);
             }
         });
+        jPanelfundo.add(jLabelBotaoBuscar);
+        jLabelBotaoBuscar.setBounds(670, 340, 93, 43);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Identificador");
+        jLabelIdentificador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelIdentificador.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelIdentificador.setText("Identificador");
+        jPanelfundo.add(jLabelIdentificador);
+        jLabelIdentificador.setBounds(20, 142, 86, 20);
 
         jTextFieldIdentificador.setEditable(false);
         jTextFieldIdentificador.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelfundo.add(jTextFieldIdentificador);
+        jTextFieldIdentificador.setBounds(20, 168, 107, 22);
 
+        jTextFieldDescricao.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldDescricaoKeyReleased(evt);
@@ -108,29 +121,41 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                 jTextFieldDescricaoKeyTyped(evt);
             }
         });
+        jPanelfundo.add(jTextFieldDescricao);
+        jTextFieldDescricao.setBounds(139, 168, 373, 22);
+        jPanelfundo.add(jLabel2);
+        jLabel2.setBounds(1622, 228, 123, 0);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Descrição");
+        jLabelDescricao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelDescricao.setText("Descrição");
+        jPanelfundo.add(jLabelDescricao);
+        jLabelDescricao.setBounds(139, 142, 65, 20);
 
-        jLabelIncluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao incluir normal.png"))); // NOI18N
-        jLabelIncluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabelIncluir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jLabelBotaoIncluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelBotaoIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao incluir normal.png"))); // NOI18N
+        jLabelBotaoIncluir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelBotaoIncluir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jLabelIncluirMouseMoved(evt);
+                jLabelBotaoIncluirMouseMoved(evt);
             }
         });
-        jLabelIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelBotaoIncluir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelIncluirMouseClicked(evt);
+                jLabelBotaoIncluirMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelIncluirMouseExited(evt);
+                jLabelBotaoIncluirMouseExited(evt);
             }
         });
+        jPanelfundo.add(jLabelBotaoIncluir);
+        jLabelBotaoIncluir.setBounds(20, 295, 90, 40);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("URL");
+        jLabelUrl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelUrl.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelUrl.setText("URL");
+        jPanelfundo.add(jLabelUrl);
+        jLabelUrl.setBounds(20, 228, 26, 20);
 
         jTextFieldUrl.setEditable(false);
         jTextFieldUrl.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,11 +164,12 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                 jTextFieldUrlActionPerformed(evt);
             }
         });
+        jPanelfundo.add(jTextFieldUrl);
+        jTextFieldUrl.setBounds(20, 254, 492, 22);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/BordaLuccaFDO.png"))); // NOI18N
-
-        jLabelLogo.setBackground(new java.awt.Color(0, 0, 0));
-        jLabelLogo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanelfundo.add(jLabelLogo);
+        jLabelLogo.setBounds(690, 220, 70, 60);
 
         jTableMarcas.setAutoCreateRowSorter(true);
         jTableMarcas.setModel(new javax.swing.table.DefaultTableModel(
@@ -170,180 +196,84 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTableMarcas);
 
+        jPanelfundo.add(jScrollPane1);
+        jScrollPane1.setBounds(0, 380, 910, 200);
+
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("BOTÃO ALTERAR");
+        jPanelfundo.add(jLabel9);
+        jLabel9.setBounds(1400, 637, 95, 16);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
+        jPanelTopo.setBackground(new java.awt.Color(0, 0, 51));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/designed2.png"))); // NOI18N
+        jLabelEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/designed2.png"))); // NOI18N
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Cadastro de veículos");
+        jLabelTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo.setText("Cadastro de veículos");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelTopoLayout = new javax.swing.GroupLayout(jPanelTopo);
+        jPanelTopo.setLayout(jPanelTopoLayout);
+        jPanelTopoLayout.setHorizontalGroup(
+            jPanelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopoLayout.createSequentialGroup()
                 .addGap(130, 130, 130)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(234, 234, 234)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(846, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelTopoLayout.setVerticalGroup(
+            jPanelTopoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelTopoLayout.createSequentialGroup()
                 .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTopoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabelEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        jPanelfundo.add(jPanelTopo);
+        jPanelTopo.setBounds(0, 0, 1739, 130);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("BOTÃO ATUALIZAR");
+        jPanelfundo.add(jLabel10);
+        jLabel10.setBounds(1252, 637, 109, 16);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/BordaLuccaFDO2.png"))); // NOI18N
-
-        jLabelAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botaoalterar.png"))); // NOI18N
-        jLabelAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelAlterar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jLabelBotaoAlterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelBotaoAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botaoalterar.png"))); // NOI18N
+        jLabelBotaoAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabelBotaoAlterar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jLabelAlterarMouseMoved(evt);
+                jLabelBotaoAlterarMouseMoved(evt);
             }
         });
-        jLabelAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelBotaoAlterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAlterarMouseClicked(evt);
+                jLabelBotaoAlterarMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelAlterarMouseExited(evt);
+                jLabelBotaoAlterarMouseExited(evt);
             }
         });
+        jPanelfundo.add(jLabelBotaoAlterar);
+        jLabelBotaoAlterar.setBounds(128, 295, 90, 40);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabelIncluir)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelAlterar))
-                            .addComponent(jLabel5)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jTextFieldUrl, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(168, 168, 168)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(286, 286, 286)
-                                .addComponent(jLabel7))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(221, 221, 221)
-                                .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel9)
-                .addGap(250, 250, 250))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(716, 716, 716)
-                .addComponent(jLabelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextFieldIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabelAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabelIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(61, 61, 61))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addContainerGap())
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/borda.png"))); // NOI18N
+        jPanelfundo.add(jLabel3);
+        jLabel3.setBounds(680, 200, 100, 100);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 891, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        jLabelLogo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelLogo1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelLogo1.setText("Logo");
+        jPanelfundo.add(jLabelLogo1);
+        jLabelLogo1.setBounds(700, 160, 60, 32);
+
+        getContentPane().add(jPanelfundo);
+        jPanelfundo.setBounds(-4, 0, 910, 580);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -366,6 +296,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                 saida[1] = aux.getDescricao();
                 saida[2] = aux.getUrl();
                 ImageIcon iconlogo = new ImageIcon((aux.getUrl()));
+                
                 //Incluir nova linha na Tabela
                 Object[] dados = {saida[0], saida[1], saida[2], iconlogo};
                 model.addRow(dados);
@@ -377,9 +308,9 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         }
 
     }
-    private void jLabelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBuscarMouseClicked
+    private void jLabelBotaoBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoBuscarMouseClicked
          ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscarclicado.png");
-        jLabelBuscar.setIcon(iconeBuscarMouse);    
+        jLabelBotaoBuscar.setIcon(iconeBuscarMouse);    
         try {
             
             JFileChooser fc = new JFileChooser("./src/Imagens/imagesLogo");
@@ -396,10 +327,11 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,"Nenhum arquivo selecionado");
         }
 
-    }//GEN-LAST:event_jLabelBuscarMouseClicked
+    }//GEN-LAST:event_jLabelBotaoBuscarMouseClicked
 
     private void jTextFieldDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyReleased
-        // TODO add your handling code here:
+       
+
     }//GEN-LAST:event_jTextFieldDescricaoKeyReleased
 
     private void jTextFieldDescricaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyTyped
@@ -425,58 +357,63 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabelLogo.setIcon((Icon) jTableMarcas.getValueAt(jTableMarcas.getSelectedRow(), 3));
     }//GEN-LAST:event_jTableMarcasMouseClicked
 
-    private void jLabelIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIncluirMouseClicked
+    private void jLabelBotaoIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoIncluirMouseClicked
         ImageIcon iconlogo = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirclicado.png");
-        jLabelIncluir.setIcon(iconlogo);
+        jLabelBotaoIncluir.setIcon(iconlogo);
         try {
             Marca objeto = new Marca(0, jTextFieldDescricao.getText(), jTextFieldUrl.getText());
             marcaControle.nada(objeto);
+            marcaControle.semFoto(objeto);
+            marcaControle.mesmaFoto(objeto);
             marcaControle.incluir(objeto);
             jTextFieldDescricao.setText("");
             imprimirDadosNaGrid(marcaControle.listagem());
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
         }
-    }//GEN-LAST:event_jLabelIncluirMouseClicked
+    }//GEN-LAST:event_jLabelBotaoIncluirMouseClicked
 
-    private void jLabelIncluirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIncluirMouseMoved
+    private void jLabelBotaoIncluirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoIncluirMouseMoved
+         jLabelBotaoIncluir.setCursor(new Cursor(Cursor.HAND_CURSOR));
         ImageIcon iconeIncluirMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirencima.png");
-        jLabelIncluir.setIcon(iconeIncluirMouse);
+        jLabelBotaoIncluir.setIcon(iconeIncluirMouse);
 
 
-    }//GEN-LAST:event_jLabelIncluirMouseMoved
+    }//GEN-LAST:event_jLabelBotaoIncluirMouseMoved
 
-    private void jLabelIncluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelIncluirMouseExited
+    private void jLabelBotaoIncluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoIncluirMouseExited
         ImageIcon iconeIncluirMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluir.png");
-        jLabelIncluir.setIcon(iconeIncluirMouse);
+        jLabelBotaoIncluir.setIcon(iconeIncluirMouse);
 
-    }//GEN-LAST:event_jLabelIncluirMouseExited
+    }//GEN-LAST:event_jLabelBotaoIncluirMouseExited
 
-    private void jLabelBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBuscarMouseMoved
-         ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscarencima.png");
-        jLabelBuscar.setIcon(iconeBuscarMouse);       
-    }//GEN-LAST:event_jLabelBuscarMouseMoved
+    private void jLabelBotaoBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoBuscarMouseMoved
+        jLabelBotaoBuscar.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscarencima.png");
+        jLabelBotaoBuscar.setIcon(iconeBuscarMouse);       
+    }//GEN-LAST:event_jLabelBotaoBuscarMouseMoved
 
-    private void jLabelBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBuscarMouseExited
+    private void jLabelBotaoBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoBuscarMouseExited
         ImageIcon iconeBuscarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaobuscar.png");
-        jLabelBuscar.setIcon(iconeBuscarMouse);       
+        jLabelBotaoBuscar.setIcon(iconeBuscarMouse);       
 
-    }//GEN-LAST:event_jLabelBuscarMouseExited
+    }//GEN-LAST:event_jLabelBotaoBuscarMouseExited
 
-    private void jLabelAlterarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseMoved
+    private void jLabelBotaoAlterarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoAlterarMouseMoved
+        jLabelBotaoAlterar.setCursor(new Cursor(Cursor.HAND_CURSOR));
         ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarencima.png");
-        jLabelAlterar.setIcon(iconeAlterarMouse);
-    }//GEN-LAST:event_jLabelAlterarMouseMoved
+        jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
+    }//GEN-LAST:event_jLabelBotaoAlterarMouseMoved
 
-    private void jLabelAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseExited
+    private void jLabelBotaoAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoAlterarMouseExited
        ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterar.png");
-        jLabelAlterar.setIcon(iconeAlterarMouse);
-    }//GEN-LAST:event_jLabelAlterarMouseExited
+        jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
+    }//GEN-LAST:event_jLabelBotaoAlterarMouseExited
 
-    private void jLabelAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlterarMouseClicked
+    private void jLabelBotaoAlterarMouseClicked(java.awt.event.MouseEvent evt) {                                                
             try {
                 ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarclicado.png");
-                jLabelAlterar.setIcon(iconeAlterarMouse);
+                jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
                 Marca objetoAlterar = new Marca(Integer.parseInt(jTextFieldIdentificador.getText()), jTextFieldDescricao.getText(), jTextFieldUrl.getText());
                 marcaControle.alterar(objetoAlterar);
                 imprimirDadosNaGrid(marcaControle.listagem());
@@ -485,26 +422,26 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
     
-    }//GEN-LAST:event_jLabelAlterarMouseClicked
+    }          
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelAlterar;
-    private javax.swing.JLabel jLabelBuscar;
-    private javax.swing.JLabel jLabelIncluir;
+    private javax.swing.JLabel jLabelBotaoAlterar;
+    private javax.swing.JLabel jLabelBotaoBuscar;
+    private javax.swing.JLabel jLabelBotaoIncluir;
+    private javax.swing.JLabel jLabelDescricao;
+    private javax.swing.JLabel jLabelEmpresa;
+    private javax.swing.JLabel jLabelIdentificador;
     private javax.swing.JLabel jLabelLogo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabelLogo1;
+    private javax.swing.JLabel jLabelTitulo;
+    private javax.swing.JLabel jLabelUrl;
+    private javax.swing.JPanel jPanelTopo;
+    private javax.swing.JPanel jPanelfundo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableMarcas;
     private javax.swing.JTextField jTextFieldDescricao;

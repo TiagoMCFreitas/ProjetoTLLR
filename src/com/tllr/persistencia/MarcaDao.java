@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -21,6 +22,29 @@ public class MarcaDao implements IMarcaDao{
     private String nomeDoArquivoNoDisco;
     public MarcaDao() {
         nomeDoArquivoNoDisco = "./src/com/tllr/arquivosdedados/Marca.txt";
+    }
+    
+    public Marca buscar(int id) throws Exception{
+        
+        FileReader fr = new FileReader(nomeDoArquivoNoDisco);
+        BufferedReader br = new BufferedReader(fr);
+           // ArrayList<Marca> lista = listagem();
+            String linha = "";
+            while((linha = br.readLine()) !=null ){
+                Marca objetoMarca = new Marca();
+                String vetorString[] = linha.split(";");
+                objetoMarca.setId(Integer.parseInt(vetorString[0]));
+                objetoMarca.setDescricao(vetorString[1]);
+                objetoMarca.setUrl(vetorString[2]);
+              
+                if(objetoMarca.getId() == id){
+                br.close();
+                return new Marca();
+                }
+                
+            }
+            return null;
+            
     }
     
     @Override
@@ -44,25 +68,20 @@ public class MarcaDao implements IMarcaDao{
     
     @Override
     public void alterar(Marca objeto) throws Exception {
-        FileReader fr = new FileReader(nomeDoArquivoNoDisco);
-        BufferedReader br  = new BufferedReader(fr);
-        String banco="";
-        String linha ="";
-        while((linha = br.readLine())!= null){
-            if(linha.contains(objeto.getId()+"")){
-               banco+=objeto.getId() + ";" + objeto.getDescricao()+ ";" + objeto.getUrl() + "\n";
-               
+        ArrayList<Marca> lista = listagem();
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        for(int i = 0; i < lista.size();i++){
+            if(objeto.getId() == lista.get(i).getId()){
+                bw.write(objeto.toString()+"\n");
             }
             else{
-            banco += linha + "\n";
+                bw.write(lista.get(i).toString()+ "\n");
             }
         }
-        br.close();
-        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
-        BufferedWriter bw =  new BufferedWriter(fw);
-        bw.write(banco);
         bw.close();
-
+        
     }
 
     @Override
@@ -79,6 +98,7 @@ public class MarcaDao implements IMarcaDao{
                 objetoMarca.setDescricao(vetorString[1]);
                 objetoMarca.setUrl(vetorString[2]);
                 listaDeMarcas.add(objetoMarca);
+                
             }
          br.close();
          return listaDeMarcas;

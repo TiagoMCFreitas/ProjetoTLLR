@@ -15,5 +15,7 @@ public interface IMarcaControle {
     void incluir(Marca objeto)throws Exception;
     void alterar(Marca objeto)throws Exception;
     void nada (Marca desc)throws Exception;
+    void semFoto(Marca url)throws Exception;
+    void mesmaFoto(Marca url) throws Exception;
     ArrayList<Marca> listagem()throws Exception;
 }
