@@ -49,7 +49,6 @@ public class MarcaControle implements IMarcaControle{
         }
         marcaPersistencia.alterar(objeto);
 
-    
     }
 
     @Override
@@ -60,6 +59,28 @@ public class MarcaControle implements IMarcaControle{
         if(desc.getDescricao().equals("")){
             throw new Exception("Nenhuma marca sendo cadastrada");
         }
+    }
+    public void semFoto(Marca url)throws Exception{
+        if(url.getUrl().equals("")){
+            throw new Exception("Selecione a logo para continuar");
+        }
+    }
+    
+    @Override
+    public void mesmaFoto(Marca url)throws Exception{
+        ArrayList<Marca> lista = listagem();
+        
+        for(int i = 0; i < lista.size();i++){
+            if(url.getUrl().equals(lista.get(i).getUrl())){
+                throw new Exception("Foto já adicionada");
+            }
+            
+         }
         
     }
+   public Marca buscar (int id) throws Exception{
+       
+       return marcaPersistencia.buscar(id);
+    }
 }
+        

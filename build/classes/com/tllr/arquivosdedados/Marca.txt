@@ -1,3 +1,3 @@
 1;FIAT;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\fiat.png
-2;MERCEDEZ;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\mercedez.png
-3;JEEP;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\jeep.png
+2;NISSAN;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\nissan.png
+3;CHEVROLET;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesLogo\chevrolet.png
