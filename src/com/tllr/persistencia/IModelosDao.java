@@ -1,7 +1,6 @@
 
 package com.tllr.persistencia;
 
-import com.tllr.modelos.Marca;
 import com.tllr.modelos.Modelo;
 import java.util.ArrayList;
 

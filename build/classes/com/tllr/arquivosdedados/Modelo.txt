@@ -1,1 +1,2 @@
-6;CRUZE;C:\Users\Patricia\Documents\NetBeansProjects\ProjetoTllr\src\Imagens\imagesModelo\CruzeChevrolet.jpg;3
+3;CLA-200;./src/Imagens/imagesModelo/Mercedes-Benz/CLA.png;1
+6;PORTO-FINO;./src/Imagens/imagesModelo/Ferrari/PortoFino.png;4

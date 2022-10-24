@@ -24,19 +24,18 @@ public class MarcaDao implements IMarcaDao{
         nomeDoArquivoNoDisco = "./src/com/tllr/arquivosdedados/Marca.txt";
     }
     
+    @Override
     public Marca buscar(int id) throws Exception{
         
         FileReader fr = new FileReader(nomeDoArquivoNoDisco);
         BufferedReader br = new BufferedReader(fr);
-           // ArrayList<Marca> lista = listagem();
-            String linha = "";
+           String linha = "";
             while((linha = br.readLine()) !=null ){
                 Marca objetoMarca = new Marca();
                 String vetorString[] = linha.split(";");
                 objetoMarca.setId(Integer.parseInt(vetorString[0]));
                 objetoMarca.setDescricao(vetorString[1]);
                 objetoMarca.setUrl(vetorString[2]);
-              
                 if(objetoMarca.getId() == id){
                 br.close();
                 return new Marca(Integer.parseInt(vetorString[0]),vetorString[1], vetorString[2]);
@@ -98,7 +97,6 @@ public class MarcaDao implements IMarcaDao{
                 objetoMarca.setDescricao(vetorString[1]);
                 objetoMarca.setUrl(vetorString[2]);
                 listaDeMarcas.add(objetoMarca);
-                
             }
          br.close();
          return listaDeMarcas;
