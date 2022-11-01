@@ -20,4 +20,7 @@ public interface IMarcaControle {
     void mesmaFoto(Marca url) throws Exception;
     ArrayList<Marca> listagem()throws Exception;
     Marca  buscar(int obj)throws Exception;
+    void seNaoExistirArquivo()throws Exception;
+        void seNaoExistirId()throws Exception;
+
 }

@@ -6,6 +6,7 @@ import com.tllr.modelos.Marca;
 import com.tllr.modelos.Modelo;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.nio.Buffer;
@@ -17,7 +18,63 @@ public class ModelosDao implements IModelosDao{
 public ModelosDao(){
       nomeDoArquivoNoDisco = "./src/com/tllr/arquivosdedados/Modelo.txt";
 }
+   
+ @Override
+    public void seNaoExistirArquivo(){
+        File file = new File(nomeDoArquivoNoDisco);
+        
+        if(file.exists() == false){
+        
+        String gravacao = "";
+        try{
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(gravacao);
+        bw.close();
+        }catch(Exception e){
+        }    
+        }
+    }
+@Override
+    public void seNaoExistirId()throws Exception{
+        File id = new File("./src/com/tllr/arquivosdedados/idGerado.txt");
+        if(id.exists() == false){
+            int idSubstituir = 0;
+        try{
+        FileWriter fw = new FileWriter(id);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("" + idSubstituir);
+        bw.close();
+        }catch(Exception e){
+        }
+        }
+    }
+
+
     @Override
+    public Modelo buscar(int id)throws Exception{
+       FileReader fr = new FileReader(nomeDoArquivoNoDisco);
+       BufferedReader br = new BufferedReader(fr);
+       String linha = "";
+       while((linha = br.readLine())!= null){
+                Modelo objetoModelo = new Modelo();
+                MarcaDao objeto  = new MarcaDao();
+                Object dados[]= linha.split(";");
+                objetoModelo.setId(Integer.parseInt((String) dados[0]));
+                objetoModelo.setDescricao((String) dados[1]);
+                objetoModelo.setUrl((String) dados[2]);
+                int idMarca = Integer.parseInt((String)dados[3]);
+                objetoModelo.setMarca(objeto.buscar(idMarca));
+                
+       if(objetoModelo.getId() == id){
+           br.close();
+           return new Modelo(Integer.parseInt((String) dados[0]), (String)dados[1], (String)dados[2], (Marca)dados[3]);
+        }         
+       }
+        return null;
+        
+    }
+@Override
     public void incluir(Modelo objeto) throws Exception {
         FileWriter fw = new FileWriter(nomeDoArquivoNoDisco,true);
         BufferedWriter bw = new BufferedWriter(fw);

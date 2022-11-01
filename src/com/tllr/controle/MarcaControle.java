@@ -81,5 +81,15 @@ public class MarcaControle implements IMarcaControle{
    public Marca buscar (int id) throws Exception{
        return marcaPersistencia.buscar(id);
     }
+
+    @Override
+    public void seNaoExistirArquivo() throws Exception {
+        marcaPersistencia.seNaoExistirArquivo();
+    }
+    @Override
+    public void seNaoExistirId() throws Exception {
+        marcaPersistencia.seNaoExistirId();
+    } 
 }
+
         

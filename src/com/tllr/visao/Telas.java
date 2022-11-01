@@ -3,7 +3,7 @@ package com.tllr.visao;
 import java.awt.Color;
 
 public class Telas extends javax.swing.JFrame {
-              
+               
              
               
     public Telas() {
@@ -26,7 +26,7 @@ public class Telas extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/designed2.png"))); // NOI18N
         Painel.add(jLabel1);
-        jLabel1.setBounds(520, 300, 290, 100);
+        jLabel1.setBounds(600, 340, 290, 100);
 
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/tela.png"))); // NOI18N
         fileMenu.setMnemonic('f');
@@ -55,6 +55,7 @@ public class Telas extends javax.swing.JFrame {
             }
         });
 
+        Marcas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         Marcas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/verificado.png"))); // NOI18N
         Marcas.setMnemonic('o');
         Marcas.setText("Cadastro/Marcas");
@@ -65,6 +66,7 @@ public class Telas extends javax.swing.JFrame {
         });
         fileMenu.add(Marcas);
 
+        Modelo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         Modelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/verificado.png"))); // NOI18N
         Modelo.setMnemonic('s');
         Modelo.setText("Cadastro/Modelos");
@@ -83,7 +85,7 @@ public class Telas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 803, Short.MAX_VALUE)
+            .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, 884, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,19 +96,17 @@ public class Telas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeloActionPerformed
-
-        CadastroModelos chamarModelo = new CadastroModelos();
-              CadastroMarcas chamarMarca = new CadastroMarcas(); 
+ CadastroModelos chamarModelo = new CadastroModelos();
+        CadastroMarcas chamarMarca = new CadastroMarcas(); 
         chamarModelo.setVisible(true);
-        chamarMarca.setVisible(false);
+        chamarMarca.dispose();
     }//GEN-LAST:event_ModeloActionPerformed
 
     private void MarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcasActionPerformed
-CadastroModelos chamarModelo = new CadastroModelos();
-              CadastroMarcas chamarMarca = new CadastroMarcas(); 
+       CadastroModelos chamarModelo = new CadastroModelos();
+        CadastroMarcas chamarMarca = new CadastroMarcas(); 
         chamarMarca.setVisible(true);
-        chamarModelo.setVisible(false);
-       
+        chamarModelo.dispose();
     }//GEN-LAST:event_MarcasActionPerformed
 
     private void fileMenuMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileMenuMouseMoved
@@ -121,7 +121,7 @@ CadastroModelos chamarModelo = new CadastroModelos();
     }//GEN-LAST:event_fileMenuMouseExited
 
     private void fileMenuMenuDragMouseEntered(javax.swing.event.MenuDragMouseEvent evt) {//GEN-FIRST:event_fileMenuMenuDragMouseEntered
-        fileMenu.setBackground(Color.red);
+      
     }//GEN-LAST:event_fileMenuMenuDragMouseEntered
 
     /**

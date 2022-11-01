@@ -8,6 +8,7 @@ import com.tllr.ferramentas.GeradorIdentificador;
 import com.tllr.modelos.Marca;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Array;
@@ -23,7 +24,37 @@ public class MarcaDao implements IMarcaDao{
     public MarcaDao() {
         nomeDoArquivoNoDisco = "./src/com/tllr/arquivosdedados/Marca.txt";
     }
-    
+    @Override
+    public void seNaoExistirArquivo(){
+        File file = new File(nomeDoArquivoNoDisco);
+        
+        if(file.exists() == false){
+        
+        String gravacao = "";
+        try{
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(gravacao);
+        bw.close();
+        }catch(Exception e){
+        }
+        }
+        
+    }
+    @Override
+    public void seNaoExistirId()throws Exception{
+        File id = new File("./src/com/tllr/arquivosdedados/idGerado.txt");
+        if(id.exists() == false){
+            int idSubstituir = 0;
+        try{
+        FileWriter fw = new FileWriter(id);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write("" + idSubstituir);
+        bw.close();
+        }catch(Exception e){
+        }
+        }
+    }
     @Override
     public Marca buscar(int id) throws Exception{
         
@@ -50,6 +81,7 @@ public class MarcaDao implements IMarcaDao{
     public void incluir(Marca objeto) throws Exception {
         try{
             //cria o arquivo
+       
             FileWriter fw = new FileWriter(nomeDoArquivoNoDisco,true);
             //Criar o buffer do arquivo
             BufferedWriter bw =new BufferedWriter(fw);
@@ -58,7 +90,7 @@ public class MarcaDao implements IMarcaDao{
             //Escreve no arquivo
             bw.write(objeto.toString()+"\n");
             //fecha o arquivo
-            bw.close();		
+            bw.close();
       }catch(Exception erro){
          throw erro;
       }

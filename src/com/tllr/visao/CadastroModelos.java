@@ -12,6 +12,8 @@ import com.tllr.imagensnatabela.JTableRenderer;
 import com.tllr.modelos.Marca;
 import com.tllr.modelos.Modelo;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,6 +24,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,9 +35,15 @@ public class CadastroModelos extends javax.swing.JFrame {
 
     IMarcaControle objetoMarca = new MarcaControle();
     IModeloControle modeloControle = new ModeloControle();
-
+    InclusaoModelos chamar = new InclusaoModelos(this, rootPaneCheckingEnabled);
     public CadastroModelos() {
         initComponents();
+        try{
+            modeloControle.seNaoExistirArquivo();
+            modeloControle.seNaoExistirId();
+        }catch(Exception e){
+            
+        }
         
         
         try {
@@ -49,7 +58,6 @@ public class CadastroModelos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Marca não existe");
         }
 
-        setBounds(0, 130, 945, 670);
         jTextFieldIdentificador.setEnabled(false);
         jTextFieldUrl.setEnabled(false);
         try {
@@ -127,7 +135,7 @@ public class CadastroModelos extends javax.swing.JFrame {
         jLabelMarca2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelMarca2.setText("Marca");
         jPanelFundo2.add(jLabelMarca2);
-        jLabelMarca2.setBounds(20, 310, 42, 20);
+        jLabelMarca2.setBounds(20, 290, 42, 20);
 
         jComboBoxMarca2.setBackground(new java.awt.Color(102, 102, 102));
         jComboBoxMarca2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,7 +149,7 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jComboBoxMarca2);
-        jComboBoxMarca2.setBounds(20, 340, 160, 22);
+        jComboBoxMarca2.setBounds(20, 320, 160, 22);
 
         jLabelBotaoBuscar2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelBotaoBuscar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao buscar normal.png"))); // NOI18N
@@ -179,7 +187,7 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jLabelBotaoAlterar2);
-        jLabelBotaoAlterar2.setBounds(120, 270, 90, 40);
+        jLabelBotaoAlterar2.setBounds(120, 360, 90, 40);
 
         jLabelBotaoIncluir2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelBotaoIncluir2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao incluir normal.png"))); // NOI18N
@@ -198,7 +206,7 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jLabelBotaoIncluir2);
-        jLabelBotaoIncluir2.setBounds(10, 270, 90, 40);
+        jLabelBotaoIncluir2.setBounds(10, 360, 90, 40);
 
         jLabelLogo2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo2.setText("Logo");
@@ -244,7 +252,7 @@ public class CadastroModelos extends javax.swing.JFrame {
         jPanelFundo2.add(jPanelTopo2);
         jPanelTopo2.setBounds(0, 0, 950, 130);
         jPanelFundo2.add(jLabelModelo);
-        jLabelModelo.setBounds(550, 230, 210, 100);
+        jLabelModelo.setBounds(590, 230, 140, 100);
 
         jLabelBordaModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBordaModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/bordamodelo.png"))); // NOI18N
@@ -288,7 +296,7 @@ public class CadastroModelos extends javax.swing.JFrame {
         }
 
         jPanelFundo2.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 430, 930, 210);
+        jScrollPane1.setBounds(0, 420, 930, 210);
 
         jTextFieldIdentificador.setEditable(false);
         jTextFieldIdentificador.setBackground(new java.awt.Color(255, 255, 255));
@@ -341,12 +349,12 @@ public class CadastroModelos extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 5, Short.MAX_VALUE)
                     .addComponent(jPanelFundo2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 5, Short.MAX_VALUE)))
         );
 
         pack();
@@ -479,6 +487,9 @@ public class CadastroModelos extends javax.swing.JFrame {
             modeloControle.semFoto(objeto);
             modeloControle.mesmaFoto(objeto);
             jTextFieldDescricao.setText("");
+            timer.setRepeats(false);
+            timer.start();
+            chamar.setVisible(true);
             modeloControle.incluir(objeto);
             imprimirDadosNaGrid(modeloControle.listagemModelo());
         } catch (Exception erro) {
@@ -512,10 +523,12 @@ public class CadastroModelos extends javax.swing.JFrame {
         if (Character.isLowerCase(e)) {
             evt.setKeyChar(Character.toUpperCase(e));
         }
-
-
     }//GEN-LAST:event_jTextFieldDescricaoKeyTyped
-
+        Timer timer = new Timer(2500, new ActionListener(){
+    public void actionPerformed(ActionEvent evt) {
+        chamar.dispose();
+    }
+});
     /**
      * @param args the command line arguments
      */

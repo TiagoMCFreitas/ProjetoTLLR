@@ -4,13 +4,14 @@
  */
 package com.tllr.visao;
 
-import com.tllr.telasReservas.Inclusao;
 import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import com.tllr.controle.IMarcaControle;
 import com.tllr.controle.MarcaControle;
 import com.tllr.imagensnatabela.JTableRenderer;
 import com.tllr.modelos.Marca;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,19 +25,23 @@ import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 public class CadastroMarcas extends javax.swing.JFrame {
+ 
  IMarcaControle marcaControle = new MarcaControle();              
- Inclusao chamar = new Inclusao(this, rootPaneCheckingEnabled);
-  
+ InclusaoMarcas chamar = new InclusaoMarcas(this, rootPaneCheckingEnabled);
  
 
      
     public CadastroMarcas() {
         initComponents();
+        try{
+        marcaControle.seNaoExistirArquivo();
+        marcaControle.seNaoExistirId();
+        }catch(Exception e){
+            
+        }
         ImageIcon icon = new ImageIcon("./src/Imagens/ImageAnimacoes/marcaInclusao.gif");
         jTextFieldIdentificador.setEnabled(false);
         jTextFieldUrl.setEnabled(false);
-               setBounds(0,130,920,620);
-               
                 
         try {
             imprimirDadosNaGrid(marcaControle.listagem());
@@ -396,13 +401,13 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
             marcaControle.nada(objeto);
             marcaControle.semFoto(objeto);
             marcaControle.mesmaFoto(objeto);
-            marcaControle.incluir(objeto);
-            
-            jTextFieldDescricao.setText("");
             chamar.setVisible(true);
-            
+            timer.setRepeats(false);
+            timer.start();
+            marcaControle.incluir(objeto);
+            jTextFieldDescricao.setText("");
             imprimirDadosNaGrid(marcaControle.listagem());
-          
+            
             
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
@@ -454,6 +459,11 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
         ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterar.png");
         jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelBotaoAlterarMouseExited
+    Timer timer = new Timer(2500, new ActionListener(){
+    public void actionPerformed(ActionEvent evt) {
+        chamar.dispose();
+    }
+});
 
     /**
      * @param args the command line arguments

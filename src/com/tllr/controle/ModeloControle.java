@@ -72,5 +72,11 @@ public class ModeloControle implements IModeloControle{
     public ArrayList<Modelo> listagemModelo() throws Exception {
         return modeloPersistencia.listagemModelo();
     }
-    
+       public void seNaoExistirArquivo() throws Exception {
+        modeloPersistencia.seNaoExistirArquivo();
+    }
+        @Override
+    public void seNaoExistirId() throws Exception {
+        modeloPersistencia.seNaoExistirId();
+    } 
 }

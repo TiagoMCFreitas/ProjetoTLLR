@@ -19,4 +19,7 @@ public interface IModeloControle {
     void semFoto(Modelo url)throws Exception;
     void mesmaFoto(Modelo url)throws Exception;
     ArrayList<Modelo> listagemModelo()throws Exception;
+    void seNaoExistirArquivo()throws Exception;
+        void seNaoExistirId()throws Exception;
+
 }

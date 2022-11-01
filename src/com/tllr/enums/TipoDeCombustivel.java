@@ -1,5 +1,5 @@
 
-package com.tllr.modelos;
+package com.tllr.enums;
 
 public enum TipoDeCombustivel {
     GASOLINA(1),DIESEL(2),FLEX(3),ELETRICO(4),GNV(5);
