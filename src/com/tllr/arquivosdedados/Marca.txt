@@ -1,4 +1,0 @@
-1;MERCEDES;./src/Imagens/logos/mercedes.png
-2;PEUGEOT;./src/Imagens/logos/peugeot.png
-4;FERRARI;./src/Imagens/logos/ferrari.png
-5;AUDI;./src/Imagens/logos/audi.png
