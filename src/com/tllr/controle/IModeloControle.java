@@ -21,5 +21,5 @@ public interface IModeloControle {
     ArrayList<Modelo> listagemModelo()throws Exception;
     void seNaoExistirArquivo()throws Exception;
         void seNaoExistirId()throws Exception;
-
+Modelo buscar(int id)throws Exception;
 }

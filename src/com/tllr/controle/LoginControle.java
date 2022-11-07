@@ -53,5 +53,11 @@ public class LoginControle implements ILoginControle{
     public void seNaoExistirId() throws Exception {
         modeloLogin.seNaoExistirId();
     }
+
+    @Override
+    public void manterConectado(Login objeto) throws Exception {
+        String linha = "";
+        
+    }
     
 }

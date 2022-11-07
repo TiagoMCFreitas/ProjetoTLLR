@@ -21,6 +21,8 @@ public class Telas extends javax.swing.JFrame {
         fileMenu = new javax.swing.JMenu();
         Marcas = new javax.swing.JMenuItem();
         Modelo = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,6 +56,11 @@ public class Telas extends javax.swing.JFrame {
                 fileMenuMouseExited(evt);
             }
         });
+        fileMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fileMenuActionPerformed(evt);
+            }
+        });
 
         Marcas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         Marcas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/verificado.png"))); // NOI18N
@@ -77,6 +84,26 @@ public class Telas extends javax.swing.JFrame {
         });
         fileMenu.add(Modelo);
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/verificado.png"))); // NOI18N
+        jMenuItem1.setText("Cadastro/Categorias");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/verificado.png"))); // NOI18N
+        jMenuItem2.setText("Cadastro/Acessorios");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jMenuItem2);
+
         menuBar.add(fileMenu);
 
         setJMenuBar(menuBar);
@@ -97,16 +124,13 @@ public class Telas extends javax.swing.JFrame {
 
     private void ModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModeloActionPerformed
  CadastroModelos chamarModelo = new CadastroModelos();
-        CadastroMarcas chamarMarca = new CadastroMarcas(); 
         chamarModelo.setVisible(true);
-        chamarMarca.dispose();
+        
     }//GEN-LAST:event_ModeloActionPerformed
 
     private void MarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarcasActionPerformed
-       CadastroModelos chamarModelo = new CadastroModelos();
         CadastroMarcas chamarMarca = new CadastroMarcas(); 
         chamarMarca.setVisible(true);
-        chamarModelo.dispose();
     }//GEN-LAST:event_MarcasActionPerformed
 
     private void fileMenuMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fileMenuMouseMoved
@@ -123,6 +147,21 @@ public class Telas extends javax.swing.JFrame {
     private void fileMenuMenuDragMouseEntered(javax.swing.event.MenuDragMouseEvent evt) {//GEN-FIRST:event_fileMenuMenuDragMouseEntered
       
     }//GEN-LAST:event_fileMenuMenuDragMouseEntered
+
+    private void fileMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileMenuActionPerformed
+        
+    }//GEN-LAST:event_fileMenuActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        CadastroCategorias chamar = new CadastroCategorias();
+        chamar.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        CadastroAcessorios chamar = new CadastroAcessorios();
+        chamar.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +204,8 @@ public class Telas extends javax.swing.JFrame {
     private javax.swing.JDesktopPane Painel;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

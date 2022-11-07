@@ -13,6 +13,6 @@ public interface ILoginDao {
     boolean achar(Login objeto)throws Exception;
     ArrayList<Login> verificar()throws Exception;
     String liberar(Login objeto)throws Exception;
-         void seNaoExistirId()throws Exception;
-
+    void seNaoExistirId()throws Exception;
+    void manterConectado(Login objeto)throws Exception;
 }

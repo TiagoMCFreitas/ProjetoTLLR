@@ -58,8 +58,11 @@ public class CadastroModelos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Marca não existe");
         }
 
-        jTextFieldIdentificador.setEnabled(false);
-        jTextFieldUrl.setEnabled(false);
+        jTextFieldIdentificador.setEnabled(true);
+        jTextFieldUrl.setEnabled(true);
+        jTextFieldIdentificador.setEditable(false);
+        jTextFieldUrl.setEditable(false);
+        setLocationRelativeTo(null);
         try {
 
             imprimirDadosNaGrid(modeloControle.listagemModelo());
@@ -122,6 +125,8 @@ public class CadastroModelos extends javax.swing.JFrame {
         jTextFieldUrl = new javax.swing.JTextField();
         jLabelUrl = new javax.swing.JLabel();
         jTextFieldDescricao = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -168,7 +173,7 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jLabelBotaoBuscar2);
-        jLabelBotaoBuscar2.setBounds(530, 360, 93, 43);
+        jLabelBotaoBuscar2.setBounds(420, 360, 93, 43);
 
         jLabelBotaoAlterar2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelBotaoAlterar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botaoalterar.png"))); // NOI18N
@@ -211,12 +216,12 @@ public class CadastroModelos extends javax.swing.JFrame {
         jLabelLogo2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo2.setText("Logo");
         jPanelFundo2.add(jLabelLogo2);
-        jLabelLogo2.setBounds(840, 170, 60, 32);
+        jLabelLogo2.setBounds(850, 190, 60, 32);
 
         jLabelModeloVeiculo4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelModeloVeiculo4.setText("Modelo Veículo");
         jPanelFundo2.add(jLabelModeloVeiculo4);
-        jLabelModeloVeiculo4.setBounds(560, 170, 180, 32);
+        jLabelModeloVeiculo4.setBounds(560, 190, 180, 32);
 
         jPanelTopo2.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -252,20 +257,20 @@ public class CadastroModelos extends javax.swing.JFrame {
         jPanelFundo2.add(jPanelTopo2);
         jPanelTopo2.setBounds(0, 0, 950, 130);
         jPanelFundo2.add(jLabelModelo);
-        jLabelModelo.setBounds(590, 230, 140, 100);
+        jLabelModelo.setBounds(590, 250, 140, 100);
 
         jLabelBordaModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBordaModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/bordamodelo.png"))); // NOI18N
         jPanelFundo2.add(jLabelBordaModelo);
-        jLabelBordaModelo.setBounds(540, 220, 230, 120);
+        jLabelBordaModelo.setBounds(540, 240, 230, 120);
 
         jLabelMarcaLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanelFundo2.add(jLabelMarcaLogo);
-        jLabelMarcaLogo.setBounds(840, 240, 70, 70);
+        jLabelMarcaLogo.setBounds(840, 250, 70, 70);
 
         jLabelBorda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/borda.png"))); // NOI18N
         jPanelFundo2.add(jLabelBorda1);
-        jLabelBorda1.setBounds(830, 230, 90, 90);
+        jLabelBorda1.setBounds(830, 240, 90, 90);
 
         jTableModelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -315,6 +320,11 @@ public class CadastroModelos extends javax.swing.JFrame {
 
         jTextFieldUrl.setEditable(false);
         jTextFieldUrl.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldUrl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldUrlMouseClicked(evt);
+            }
+        });
         jTextFieldUrl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUrlActionPerformed(evt);
@@ -335,6 +345,27 @@ public class CadastroModelos extends javax.swing.JFrame {
         });
         jPanelFundo2.add(jTextFieldDescricao);
         jTextFieldDescricao.setBounds(150, 190, 380, 22);
+
+        jButton2.setBackground(new java.awt.Color(21, 21, 88));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/curva-de-seta-apontando-para-a-esquerda.png"))); // NOI18N
+        jButton2.setText("Marcas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanelFundo2.add(jButton2);
+        jButton2.setBounds(790, 140, 90, 30);
+
+        jButton3.setBackground(new java.awt.Color(21, 21, 88));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/casa (1).png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanelFundo2.add(jButton3);
+        jButton3.setBounds(890, 140, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -430,6 +461,7 @@ public class CadastroModelos extends javax.swing.JFrame {
     private void jLabelBotaoAlterar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoAlterar2MouseClicked
         ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarclicado.png");
         jLabelBotaoAlterar2.setIcon(iconeAlterarMouse);
+        if(jTableModelos.getSelectedRow() != -1){
         try {
 
             int idMarca = 0;
@@ -449,8 +481,11 @@ public class CadastroModelos extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Só é possível alterar um modelo válido");
+        }
     }//GEN-LAST:event_jLabelBotaoAlterar2MouseClicked
-
+    
     private void jLabelBotaoAlterar2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoAlterar2MouseExited
         ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterar.png");
         jLabelBotaoAlterar2.setIcon(iconeAlterarMouse);
@@ -486,11 +521,13 @@ public class CadastroModelos extends javax.swing.JFrame {
             modeloControle.nada(objeto);
             modeloControle.semFoto(objeto);
             modeloControle.mesmaFoto(objeto);
-            jTextFieldDescricao.setText("");
+            modeloControle.incluir(objeto);
             timer.setRepeats(false);
             timer.start();
             chamar.setVisible(true);
-            modeloControle.incluir(objeto);
+            jTextFieldDescricao.setText("");
+            jTextFieldUrl.setText("");
+            jLabelModelo.setIcon(null);
             imprimirDadosNaGrid(modeloControle.listagemModelo());
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
@@ -503,18 +540,28 @@ public class CadastroModelos extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelBotaoIncluir2MouseExited
 
     private void jTableModelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableModelosMouseClicked
-        jTextFieldIdentificador.setText(jTableModelos.getValueAt(jTableModelos.getSelectedRow(), 0).toString());
-        jTextFieldDescricao.setText(jTableModelos.getValueAt(jTableModelos.getSelectedRow(), 1).toString());
-        jTextFieldUrl.setText(jTableModelos.getValueAt(jTableModelos.getSelectedRow(), 2).toString());
-
-        String nome = jTextFieldUrl.getText();
-        ImageIcon logo = new ImageIcon(nome);
-        logo.setImage(logo.getImage().getScaledInstance(jLabelModelo.getWidth(), jLabelModelo.getHeight(), 1));
-        jLabelModelo.setIcon(logo);
+        try {
+           
+            jTextFieldIdentificador.setText(jTableModelos.getValueAt(jTableModelos.getSelectedRow(), 0).toString());
+            jTextFieldDescricao.setText(jTableModelos.getValueAt(jTableModelos.getSelectedRow(), 1).toString());
+            jTextFieldUrl.setText(jTableModelos.getValueAt(jTableModelos.getSelectedRow(), 2).toString());
+             int idModelo = Integer.parseInt(jTextFieldIdentificador.getText());
+            jComboBoxMarca2.setSelectedItem(modeloControle.buscar(idModelo).getMarca().getDescricao());
+            
+            
+            String nome = jTextFieldUrl.getText();
+            ImageIcon logo = new ImageIcon(nome);
+            logo.setImage(logo.getImage().getScaledInstance(jLabelModelo.getWidth(), jLabelModelo.getHeight(), 1));
+            jLabelModelo.setIcon(logo);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroModelos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jTableModelosMouseClicked
 
     private void jTextFieldUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUrlActionPerformed
 
+                  
     }//GEN-LAST:event_jTextFieldUrlActionPerformed
 
     private void jTextFieldDescricaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyTyped
@@ -524,6 +571,40 @@ public class CadastroModelos extends javax.swing.JFrame {
             evt.setKeyChar(Character.toUpperCase(e));
         }
     }//GEN-LAST:event_jTextFieldDescricaoKeyTyped
+
+    private void jTextFieldUrlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUrlMouseClicked
+try {
+
+            JFileChooser fc = new JFileChooser("./src/Imagens/imagesModelo");
+            File workingDirectory = new File("./src/Imagens/imagesModelo");
+            fc.setCurrentDirectory(workingDirectory);
+            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fc.showOpenDialog(this);
+            File arquivologo = fc.getSelectedFile();
+            File arquivopasta = fc.getCurrentDirectory();
+            String nomeDoArquivo = "./src/Imagens/imagesModelo/";
+            String nomeFinal = nomeDoArquivo + arquivopasta.getName()+"/"+ arquivologo.getName();
+            jTextFieldUrl.setText(nomeFinal);
+            ImageIcon iconLogo = new ImageIcon(nomeDoArquivo +arquivopasta.getName()+"/"+ arquivologo.getName());
+            iconLogo.setImage(iconLogo.getImage().getScaledInstance(jLabelModelo.getWidth(), jLabelModelo.getHeight(), 1));
+            jLabelModelo.setIcon(iconLogo);
+            
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Nenhum arquivo selecionado");
+        }
+
+    }//GEN-LAST:event_jTextFieldUrlMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CadastroMarcas chamar = new CadastroMarcas();
+        this.dispose();
+        chamar.setVisible(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
         Timer timer = new Timer(2500, new ActionListener(){
     public void actionPerformed(ActionEvent evt) {
         chamar.dispose();
@@ -566,6 +647,8 @@ public class CadastroModelos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBoxMarca2;
     private javax.swing.JLabel jLabelBorda1;
     private javax.swing.JLabel jLabelBordaModelo;

@@ -49,7 +49,9 @@ public class Marca implements Comparable<Marca>{
 
     @Override
     public int compareTo(Marca id ) {
-        if(this.id == id.getId()) return(this.id++);
+        Modelo objeto = new Modelo();
+        
+        if(this.id == id.getId() || this.id == objeto.getId()) return(this.id++);
         else  return(this.id - id.getId());
 
     }

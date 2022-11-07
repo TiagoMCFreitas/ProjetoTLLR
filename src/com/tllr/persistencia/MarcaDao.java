@@ -26,16 +26,22 @@ public class MarcaDao implements IMarcaDao{
     }
     @Override
     public void seNaoExistirArquivo(){
+        String modelos = "./src/com/tllr/arquivosdedados/Modelo.txt";
+
         File file = new File(nomeDoArquivoNoDisco);
-        
-        if(file.exists() == false){
+        File fileM = new File(modelos);
+        if(file.exists() == false || fileM.exists() == false){
         
         String gravacao = "";
         try{
-        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco,true);
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
         BufferedWriter bw = new BufferedWriter(fw);
+        FileWriter fwM = new FileWriter(modelos);
+        BufferedWriter bwM = new BufferedWriter(fwM);
         bw.write(gravacao);
         bw.close();
+        bwM.write(gravacao);
+        bwM.close();
         }catch(Exception e){
         }
         }

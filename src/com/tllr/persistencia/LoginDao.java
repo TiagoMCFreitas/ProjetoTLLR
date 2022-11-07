@@ -43,7 +43,14 @@ public LoginDao(){
         bw.write(objeto.toString() + "\n");
         bw.close();
     }
-    
+    public void manterConectado(Login objeto)throws Exception{
+        String arquivoTemp = "./src/com/tllr/arquivosdedados/LoginTemporario";
+        FileWriter fw = new FileWriter(nomeDoArquivo);
+        BufferedWriter bw = new BufferedWriter(fw);
+        objeto.setId(GeradorIdentificador.getID());
+        bw.write(objeto.toString() + "\n");
+        bw.close();
+    }
     @Override
     public boolean achar(Login objeto) throws Exception {
        ArrayList<Login> lista = verificar();
@@ -61,7 +68,7 @@ public LoginDao(){
         @Override
     public ArrayList<Login> verificar()throws Exception{
   try {
-            ArrayList<Login> listaDeMarcas = new ArrayList<Login>();
+            ArrayList<Login> listaDeNomes = new ArrayList<Login>();
             FileReader fr = new FileReader(nomeDoArquivo);
             BufferedReader br  = new BufferedReader(fr);
             String linha = "";
@@ -72,10 +79,10 @@ public LoginDao(){
                 objetoLogin.setNome(vetorString[1]);
                 objetoLogin.setSenha(vetorString[2]);
                 objetoLogin.setEmail(vetorString[3]);
-                listaDeMarcas.add(objetoLogin);
+                listaDeNomes.add(objetoLogin);
             }
          br.close();
-         return listaDeMarcas;
+         return listaDeNomes;
         } catch(Exception erro){
          throw erro;
             

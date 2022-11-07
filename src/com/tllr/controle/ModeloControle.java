@@ -79,4 +79,9 @@ public class ModeloControle implements IModeloControle{
     public void seNaoExistirId() throws Exception {
         modeloPersistencia.seNaoExistirId();
     } 
+
+    @Override
+    public Modelo buscar(int id) throws Exception {
+        return modeloPersistencia.buscar(id);
+    }
 }

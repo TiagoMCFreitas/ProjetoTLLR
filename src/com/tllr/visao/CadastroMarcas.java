@@ -41,8 +41,8 @@ public class CadastroMarcas extends javax.swing.JFrame {
         }
         ImageIcon icon = new ImageIcon("./src/Imagens/ImageAnimacoes/marcaInclusao.gif");
         jTextFieldIdentificador.setEnabled(false);
-        jTextFieldUrl.setEnabled(false);
-                
+        jTextFieldUrl.setEnabled(true);
+        setLocationRelativeTo(null);
         try {
             imprimirDadosNaGrid(marcaControle.listagem());
         } catch (Exception erro) {
@@ -83,6 +83,8 @@ public class CadastroMarcas extends javax.swing.JFrame {
         jLabelBotaoAlterar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelLogo1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -176,7 +178,7 @@ public class CadastroMarcas extends javax.swing.JFrame {
 
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanelfundo.add(jLabelLogo);
-        jLabelLogo.setBounds(690, 220, 70, 60);
+        jLabelLogo.setBounds(680, 250, 70, 60);
 
         jTableMarcas.setAutoCreateRowSorter(true);
         jTableMarcas.setModel(new javax.swing.table.DefaultTableModel(
@@ -275,12 +277,33 @@ public class CadastroMarcas extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/borda.png"))); // NOI18N
         jPanelfundo.add(jLabel3);
-        jLabel3.setBounds(680, 200, 100, 100);
+        jLabel3.setBounds(670, 230, 100, 100);
 
         jLabelLogo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo1.setText("Logo");
         jPanelfundo.add(jLabelLogo1);
-        jLabelLogo1.setBounds(700, 160, 60, 32);
+        jLabelLogo1.setBounds(690, 190, 60, 32);
+
+        jButton2.setBackground(new java.awt.Color(21, 21, 88));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/curva-de-seta-apontando-para-a-esquerda.png"))); // NOI18N
+        jButton2.setText("Modelos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanelfundo.add(jButton2);
+        jButton2.setBounds(760, 140, 100, 30);
+
+        jButton3.setBackground(new java.awt.Color(21, 21, 88));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/casa (1).png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanelfundo.add(jButton3);
+        jButton3.setBounds(870, 140, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -309,9 +332,6 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
         try {
 
             DefaultTableModel model = (DefaultTableModel) jTableMarcas.getModel();
-            
-            
-
             //Limpa a tabela 
             Collections.sort(listaDeMarcas);
             model.setNumRows(0);
@@ -351,10 +371,11 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
             fc.setCurrentDirectory(workingDirectory);
             fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
             fc.showOpenDialog(this);
-            File arquivo = fc.getSelectedFile();
-            String nomeDoArquivo = arquivo.getPath();
-            jTextFieldUrl.setText(nomeDoArquivo);
-            ImageIcon logo = new ImageIcon(nomeDoArquivo);
+            File arquivologo = fc.getSelectedFile();
+            String nomeDoArquivo = "./src/Imagens/logos/";
+            String nomeFinal = nomeDoArquivo + arquivologo.getName();
+            jTextFieldUrl.setText(nomeFinal);
+            ImageIcon logo = new ImageIcon(nomeFinal);
              logo.setImage(logo.getImage().getScaledInstance(jLabelLogo.getWidth(), jLabelLogo.getHeight(), 1));
               jLabelLogo.setIcon(logo);
         } catch (Exception erro) {
@@ -401,11 +422,15 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
             marcaControle.nada(objeto);
             marcaControle.semFoto(objeto);
             marcaControle.mesmaFoto(objeto);
+          
+            marcaControle.incluir(objeto);
             chamar.setVisible(true);
             timer.setRepeats(false);
             timer.start();
-            marcaControle.incluir(objeto);
             jTextFieldDescricao.setText("");
+            jTextFieldUrl.setText("");
+            jLabelLogo.setIcon(null);
+            jTextFieldIdentificador.setText("");
             imprimirDadosNaGrid(marcaControle.listagem());
             
             
@@ -440,18 +465,23 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
     }//GEN-LAST:event_jLabelBotaoAlterarMouseMoved
 
     private void jLabelBotaoAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoAlterarMouseClicked
-         try {
-                ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarclicado.png");
+             ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterarclicado.png");
                 jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
-                
+           
+        if(jTableMarcas.getSelectedRow() != -1){
+        try {
                 Marca objetoAlterar = new Marca(Integer.parseInt(jTextFieldIdentificador.getText()), jTextFieldDescricao.getText(), jTextFieldUrl.getText());
+             
                 marcaControle.alterar(objetoAlterar);
                 imprimirDadosNaGrid(marcaControle.listagem());
             } catch (Exception ex) {
 
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
-    
+        }
+        else{
+              JOptionPane.showMessageDialog(this, "Só é possível alterar uma marca válida");
+        }
            
     }//GEN-LAST:event_jLabelBotaoAlterarMouseClicked
 
@@ -459,6 +489,17 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
         ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterar.png");
         jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelBotaoAlterarMouseExited
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        CadastroModelos chamar = new CadastroModelos();
+        this.dispose();
+        chamar.setVisible(true);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
     Timer timer = new Timer(2500, new ActionListener(){
     public void actionPerformed(ActionEvent evt) {
         chamar.dispose();
@@ -501,6 +542,8 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

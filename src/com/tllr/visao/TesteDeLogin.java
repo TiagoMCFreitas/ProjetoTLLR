@@ -388,8 +388,9 @@ public class TesteDeLogin extends javax.swing.JFrame {
           try{ 
             senha.incluir();
             this.dispose();
-            TelaVerificacao chamar = new TelaVerificacao();
+            InformarEmail chamar = new InformarEmail();
             chamar.setVisible(true);
+            
         } catch (Exception ex) {
             Logger.getLogger(TesteDeLogin.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -20,7 +20,7 @@ public class InclusaoMarcas extends javax.swing.JDialog {
         super(parent, modal);
         
                 initComponents();
-                setBounds(160,320,380,200);
+                setBounds(550,320,380,200);
                     
     }
     

@@ -21,20 +21,21 @@ public ModelosDao(){
    
  @Override
     public void seNaoExistirArquivo(){
+
         File file = new File(nomeDoArquivoNoDisco);
-        
         if(file.exists() == false){
         
-        String gravacao = "";
         try{
-        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco,true);
+        FileWriter fw = new FileWriter(nomeDoArquivoNoDisco);
         BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(gravacao);
+        bw.write("");
         bw.close();
-        }catch(Exception e){
-        }    
-        }
+    }catch(Exception ex){
+        
     }
+    }
+    }
+    
 @Override
     public void seNaoExistirId()throws Exception{
         File id = new File("./src/com/tllr/arquivosdedados/idGerado.txt");
@@ -68,7 +69,7 @@ public ModelosDao(){
                 
        if(objetoModelo.getId() == id){
            br.close();
-           return new Modelo(Integer.parseInt((String) dados[0]), (String)dados[1], (String)dados[2], (Marca)dados[3]);
+           return new Modelo(Integer.parseInt((String) dados[0]), (String)dados[1], (String)dados[2], objetoModelo.getMarca());
         }         
        }
         return null;
