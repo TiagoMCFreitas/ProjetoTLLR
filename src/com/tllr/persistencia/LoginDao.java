@@ -3,6 +3,7 @@ package com.tllr.persistencia;
 
 import com.tllr.ferramentas.GeradorIdentificador;
 import com.tllr.modelos.Login;
+import com.tllr.modelos.Marca;
 import com.tllr.visao.Telas;
 import java.io.BufferedWriter;
 import java.io.BufferedReader;
@@ -43,12 +44,18 @@ public LoginDao(){
         bw.write(objeto.toString() + "\n");
         bw.close();
     }
-    public void manterConectado(Login objeto)throws Exception{
-        String arquivoTemp = "./src/com/tllr/arquivosdedados/LoginTemporario";
-        FileWriter fw = new FileWriter(nomeDoArquivo);
+        @Override
+    public void manterConectado(String nome)throws Exception{
+        String arquivoTemp = "./src/com/tllr/arquivosdedados/LoginTemporario.txt";
+        ArrayList<Login> lista = verificar();
+        FileWriter fw = new FileWriter(arquivoTemp);
         BufferedWriter bw = new BufferedWriter(fw);
-        objeto.setId(GeradorIdentificador.getID());
-        bw.write(objeto.toString() + "\n");
+        bw.write("");
+        for(int i = 0; i < lista.size();i++){
+            if(nome.equals(lista.get(i).getNome())){
+                bw.write(lista.get(i).toString());
+            }
+        }
         bw.close();
     }
     @Override
@@ -98,4 +105,42 @@ public LoginDao(){
         else return "Nao Autorizado";
     }
 
+    @Override
+    public void alterarSenha(Login objeto) throws Exception {
+        ArrayList<Login> lista = verificar();
+        FileWriter fw = new FileWriter(nomeDoArquivo);
+        BufferedWriter bw = new BufferedWriter(fw);
+        for(int i = 0; i < lista.size();i++){
+            if(objeto.getId() == lista.get(i).getId()){
+                bw.write(objeto.toString() + "\n");
+            }else{
+                bw.write(lista.get(i).toString() + "\n");
+            }
+        }
+        bw.close();
+    }
+
+    @Override
+    public Login buscar(int id) throws Exception {
+        String arquivoTemp = "./src/com/tllr/arquivosdedados/LoginTemporario.txt";
+        FileReader fr = new FileReader(arquivoTemp);
+        BufferedReader br = new BufferedReader(fr);
+           String linha = "";
+            while((linha = br.readLine()) !=null ){
+                Login objetoLogin = new Login();
+                String vetorString[] = linha.split(";");
+                objetoLogin.setId(Integer.parseInt(vetorString[0]));
+                objetoLogin.setNome(vetorString[1]);
+                objetoLogin.setSenha(vetorString[2]);
+                objetoLogin.setEmail(vetorString[3]);
+                if(objetoLogin.getId() == id){
+                br.close();
+                return new Login(Integer.parseInt(vetorString[0]), vetorString[1], vetorString[2], vetorString[3]);
+                }
+                
+            }
+            return null;
+            
+    }
+    
 }

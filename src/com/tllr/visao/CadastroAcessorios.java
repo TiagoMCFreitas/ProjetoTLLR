@@ -84,6 +84,7 @@ public class CadastroAcessorios extends javax.swing.JFrame {
         jTableCategorias = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanelfundo.setBackground(new java.awt.Color(153, 153, 153));
         jPanelfundo.setLayout(null);

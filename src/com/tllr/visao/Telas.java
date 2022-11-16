@@ -1,14 +1,13 @@
 
 package com.tllr.visao;
+import com.sun.media.sound.JARSoundbankReader;
 import java.awt.Color;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Telas extends javax.swing.JFrame {
-               
-             
-              
     public Telas() {
-        initComponents();
-        setExtendedState(MAXIMIZED_BOTH);
+        initComponents();   
     }
        
     @SuppressWarnings("unchecked")

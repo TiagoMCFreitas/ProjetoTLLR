@@ -4,26 +4,44 @@
  */
 package com.tllr.visao;
 
+import com.tllr.codigoFuncionario.CODIGO;
 import com.tllr.controle.ILoginControle;
 import com.tllr.controle.LoginControle;
 import com.tllr.modelos.Login;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Address;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
  * @author tiago
  */
-public class TelaCadastro extends javax.swing.JFrame {
+public class TelaEsqueceuSenha extends javax.swing.JFrame {
     ILoginControle loginControle = new LoginControle();
+    TelaRecadastrarSenha tela;
+            boolean verificar = false;
+
     /**
      * Creates new form TelaCadastro
      */
-    public TelaCadastro() {
+    public TelaEsqueceuSenha() {
         initComponents();
+        tela = new TelaRecadastrarSenha();
         setBounds(0, 0, 715 , 555);
         setLocationRelativeTo(null);
-       
+        jTextField3.setEnabled(false);
+
        
     }
 
@@ -40,13 +58,16 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabelEmpresa2 = new javax.swing.JLabel();
         jLabelTitulo2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         jLabelTitulo3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabelTitulo4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jLabelTitulo6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField3 = new javax.swing.JTextField();
         jLabelTitulo5 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jLabelCadastrar = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,33 +104,44 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
+        jButton3.setBackground(new java.awt.Color(21, 21, 88));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/curva-de-seta-apontando-para-a-esquerda.png"))); // NOI18N
+        jButton3.setText("Login");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         jLabelTitulo3.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitulo3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelTitulo3.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitulo3.setText("E-mail");
 
         jLabelTitulo4.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitulo4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelTitulo4.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitulo4.setText("Login");
+
+        jLabelTitulo6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabelTitulo6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelTitulo6.setText("Para alterar sua senha insira o seu email e seu login");
+
+        jButton1.setText("Alterar a Senha");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setToolTipText("<html>\n<h3> Para ter acesso a esse campo de texto, clique no botao \"Codigo de verificacao\"</h3>\n</html>");
 
         jLabelTitulo5.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitulo5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelTitulo5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelTitulo5.setText("Senha");
+        jLabelTitulo5.setText("Codigo");
 
-        jLabelCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/cadastro.png"))); // NOI18N
-        jLabelCadastrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jLabelCadastrarMouseMoved(evt);
-            }
-        });
-        jLabelCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelCadastrarMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelCadastrarMouseExited(evt);
+        jButton2.setText("Codigo de verificacao");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -118,39 +150,57 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelTitulo5)
-                            .addComponent(jLabelTitulo4)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelTitulo3)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1)))
+                            .addComponent(jLabelTitulo6)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextField2)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelTitulo4)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(jLabelCadastrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelTitulo5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(186, 186, 186))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jButton3)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabelTitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelTitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelTitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelTitulo6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jLabelCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelTitulo4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelTitulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTitulo5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,30 +222,88 @@ public class TelaCadastro extends javax.swing.JFrame {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCadastrarMouseClicked
-      try {
-                            ImageIcon botaoCadastrar = new ImageIcon("./src/Imagens/ImageAnimacoes/cadastroLuminoso.png");
-                jLabelCadastrar.setIcon(botaoCadastrar);
-            Login objetoLogin = new Login(0, jTextField2.getText(), jPasswordField1.getText(),jTextField1.getText());
-            loginControle.cadastrar(objetoLogin);
-            this.dispose();
-            TesteDeLogin abrir = new TesteDeLogin();
-            abrir.setVisible(true);
-            
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            ILoginControle loginControle = new LoginControle();
+            CODIGO codigo = new CODIGO();
+            codigo.listagem();
+            ArrayList<Login> lista = loginControle.verificar();
+            for(int i = 0; i < lista.size();i++){
+                if(jTextField1.getText().equals(lista.get(i).getNome()) && jTextField2.getText().equals(lista.get(i).getEmail()) && jTextField3.getText().equals(codigo.getCodigo())){
+                    tela.enviar(jTextField1.getText(), jTextField2.getText());
+                    this.dispose();
+                    tela.setVisible(true);
+                    verificar = true;
+                    break;
+                }
+            }
+                if(verificar == false){
+                    JOptionPane.showMessageDialog(this, "Login, email ou codigo errado");
+                }
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }    }//GEN-LAST:event_jLabelCadastrarMouseClicked
+            Logger.getLogger(TelaEsqueceuSenha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jLabelCadastrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCadastrarMouseExited
-  ImageIcon botaoCadastrar = new ImageIcon("./src/Imagens/Images/cadastro.png");
-        jLabelCadastrar.setIcon(botaoCadastrar);
-    }//GEN-LAST:event_jLabelCadastrarMouseExited
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         Properties props = new Properties();
+    /** Parâmetros de conexão com servidor Gmail */
+    props.put("mail.smtp.host", "smtp.sendgrid.net");
+    props.put("mail.smtp.socketFactory.port", "465");
+    props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+    props.put("mail.smtp.auth", "true");
+    props.put("mail.smtp.port", "465");
 
-    private void jLabelCadastrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCadastrarMouseMoved
-    
-     ImageIcon botaoCadastrar = new ImageIcon("./src/Imagens/ImageAnimacoes/cadastroLuminoso.png");
-     jLabelCadastrar.setIcon(botaoCadastrar);
-    }//GEN-LAST:event_jLabelCadastrarMouseMoved
+    Session session = Session.getDefaultInstance(props,
+      new javax.mail.Authenticator() {
+           protected PasswordAuthentication getPasswordAuthentication()
+           {
+                 return new PasswordAuthentication("*","*");
+           }
+      });
+
+    /** Ativa Debug para sessão */
+    session.setDebug(true);
+      CODIGO codigo = new CODIGO();
+
+    try {
+
+      Message message = new MimeMessage(session);
+      message.setFrom(new InternetAddress("tllrempresa@gmail.com"));
+      //Remetente
+      String email = jTextField2.getText();
+      codigo.listagem();
+      
+      if(email.equals("") || jTextField1.getText().equals("")){
+          JOptionPane.showMessageDialog(this, "Insira seu nome e seu email para continuar");
+          throw new Exception("Insira seu nome e seu email para continuar");
+      }
+   
+      Address[] toUser = InternetAddress.parse( email);
+      message.setRecipients(Message.RecipientType.TO, toUser);
+      
+     
+      message.setSubject("Codigo de verificacao para alteração de senha");//Assunto
+      message.setText("Este é o seu código gerado, único de verificação de senha! NÃO IRÁ FUNCIONAR NOVAMENTE" + "\n" + codigo.getCodigo());
+   
+      Transport.send(message);
+      
+      JOptionPane.showMessageDialog(this, "Email enviado");
+      jTextField3.setEnabled(true);
+     } catch (MessagingException e) {
+        throw new RuntimeException(e);
+    }   catch (Exception ex) {
+            Logger.getLogger(InformarEmail.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        TelaDeLogin chamar = new TelaDeLogin();
+        chamar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,35 +322,39 @@ public class TelaCadastro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEsqueceuSenha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEsqueceuSenha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEsqueceuSenha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEsqueceuSenha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastro().setVisible(true);
+                new TelaEsqueceuSenha().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabelCadastrar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabelEmpresa2;
     private javax.swing.JLabel jLabelTitulo2;
     private javax.swing.JLabel jLabelTitulo3;
     private javax.swing.JLabel jLabelTitulo4;
     private javax.swing.JLabel jLabelTitulo5;
+    private javax.swing.JLabel jLabelTitulo6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelTopo2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

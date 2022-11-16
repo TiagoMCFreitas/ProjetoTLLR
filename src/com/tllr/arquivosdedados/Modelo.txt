@@ -1,4 +1,0 @@
-3;STRADA;./src/Imagens/imagesModelo/Fiat/Strada.png;2
-7;HURACAN;./src/Imagens/imagesModelo/Lamborghini/Huracan.png;6
-11;HB20;./src/Imagens/imagesModelo/Hyundai/HB20.png;10
-12;XC40;./src/Imagens/imagesModelo/Volvo/XC40.png;9

@@ -14,5 +14,7 @@ public interface ILoginDao {
     ArrayList<Login> verificar()throws Exception;
     String liberar(Login objeto)throws Exception;
     void seNaoExistirId()throws Exception;
-    void manterConectado(Login objeto)throws Exception;
+    void manterConectado(String nome)throws Exception;
+    void alterarSenha(Login objeto)throws Exception;
+    Login buscar (int id)throws Exception;
 }

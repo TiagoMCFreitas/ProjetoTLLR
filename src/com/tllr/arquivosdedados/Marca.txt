@@ -1,5 +1,0 @@
-2;FIAT;./src/Imagens/logos/fiat.png
-6;LAMBORGUINI;./src/Imagens/logos/lamborguini.png
-8;KIA;./src/Imagens/logos/kia.png
-9;VOLVO;./src/Imagens/logos/volvo.png
-10;HYUNDAI;./src/Imagens/logos/hyundai.png
