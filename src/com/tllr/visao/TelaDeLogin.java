@@ -482,8 +482,12 @@ public class TelaDeLogin extends javax.swing.JFrame {
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         try {
             jLabelEstado.setForeground(Color.black);
-            Login objetoLogin = new Login(0, jTextField1.getText(), texto, "");
-            
+            if(mostrar == true){
+            objetoLogin = new Login(0, jTextField1.getText(), jPasswordField1.getText(), "");
+            }
+            else{
+            objetoLogin = new Login(0, jTextField1.getText(), tf.getText(), "");
+            }            
             if (loginControle.achar(objetoLogin) == false) {
                 JOptionPane.showMessageDialog(this, "Usuário não encontrado");
                 jCheckBox2.setSelected(false);
