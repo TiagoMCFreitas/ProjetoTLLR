@@ -55,9 +55,19 @@ public class LoginControle implements ILoginControle{
     }
 
     @Override
-    public void manterConectado(Login objeto) throws Exception {
-        String linha = "";
-        
+    public void manterConectado(String nome) throws Exception {
+        modeloLogin.manterConectado(nome);
+    
+    }
+
+    @Override
+    public void alterar(Login objeto) throws Exception {
+        modeloLogin.alterarSenha(objeto);
+    }
+
+    @Override
+    public Login buscar(int id) throws Exception {
+        return modeloLogin.buscar(id);
     }
     
 }

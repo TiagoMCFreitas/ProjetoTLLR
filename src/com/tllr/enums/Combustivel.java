@@ -1,11 +1,11 @@
 
 package com.tllr.enums;
 
-public enum TipoDeCombustivel {
+public enum Combustivel {
     GASOLINA(1),DIESEL(2),FLEX(3),ELETRICO(4),GNV(5);
     
     public int valor;
-    private TipoDeCombustivel(int valorCombustivel){
+    private Combustivel(int valorCombustivel){
         valor = valorCombustivel;
     }
 

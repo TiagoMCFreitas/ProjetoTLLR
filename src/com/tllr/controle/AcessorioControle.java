@@ -60,5 +60,19 @@ public class AcessorioControle implements IAcessorioControle{
     public Acessorio buscar(int id) throws Exception {
         return acessorioPersistencia.buscar(id);
     }
+
+    @Override
+    public void nada(Acessorio desc) throws Exception {
+        if(desc.getDescricao().equals("")){
+            throw new Exception("Nenhum acessorio sendo cadastrado");
+        }
+    }
+
+    @Override
+    public void precoVazio(Acessorio preco) throws Exception {
+        if(preco.getValorLocacao()<= 0){
+            throw new Exception("Preco Inválido");
+        }
+    }
     
 }

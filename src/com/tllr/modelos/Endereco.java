@@ -3,25 +3,25 @@ package com.tllr.modelos;
 
 
 public class Endereco {
-  
     private String logradouro;
     private String complemento;
-    private int CEP;
+    private String CEP;
     private String bairro;
     private String cidade;
     private String estado;
 
-    public Endereco(String logradouro, String complemento, int CEP, String bairro, String cidade, String estado) {
-        this.logradouro = logradouro;
-        this.complemento = complemento;
+
+
+    public Endereco(String CEP,String bairro,String cidade,String complemento,String estado,String logradouro) {
         this.CEP = CEP;
         this.bairro = bairro;
         this.cidade = cidade;
+        this.complemento = complemento;
         this.estado = estado;
+        this.logradouro = logradouro;
     }
     
    public Endereco(){
-       
    } 
 
     public String getLogradouro() {
@@ -40,11 +40,11 @@ public class Endereco {
         this.complemento = complemento;
     }
 
-    public int getCEP() {
+    public String getCEP() {
         return CEP;
     }
 
-    public void setCEP(int CEP) {
+    public void setCEP(String CEP) {
         this.CEP = CEP;
     }
 
@@ -74,6 +74,6 @@ public class Endereco {
     
     @Override
     public String toString(){
-        return logradouro + ";" + complemento + ";" + CEP + ";" + bairro + ";" + cidade + ";" + estado;
+        return CEP + ";" + bairro + ";" + cidade + ";" + complemento + ";" + estado + ";" + logradouro;
     }
 }

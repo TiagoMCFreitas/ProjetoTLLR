@@ -60,5 +60,25 @@ public class CategoriaControle implements ICategoriaControle{
     public Categoria buscar(int id) throws Exception {
         return categoriaPersistencia.buscar(id);
     }
+
+    @Override
+    public Categoria buscarPorDesc(String desc) throws Exception {
+        return categoriaPersistencia.buscarPorDesc(desc);
+    }
+
+    @Override
+    public void nada(Categoria desc) throws Exception {
+        if(desc.getDescricao().equals("")){
+            throw new Exception("Nenhuma categoria sendo cadastrada");
+        }
+    }
+
+    @Override
+    public void precoVazio(Categoria preco) throws Exception {
+        if(preco.getValorLocacao()<=0){
+            throw new Exception("Preco invalido");
+        }
+    }
+    
     
 }

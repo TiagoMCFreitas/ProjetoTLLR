@@ -55,11 +55,13 @@ public class MarcaControle implements IMarcaControle{
     public ArrayList<Marca> listagem() throws Exception {
         return marcaPersistencia.listagem(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    @Override
     public void nada(Marca desc)throws Exception{
         if(desc.getDescricao().equals("")){
             throw new Exception("Nenhuma marca sendo cadastrada");
         }
     }
+    @Override
     public void semFoto(Marca url)throws Exception{
         if(url.getUrl().equals("")){
             throw new Exception("Selecione a logo para continuar");
@@ -78,6 +80,7 @@ public class MarcaControle implements IMarcaControle{
          }
         
     }
+    @Override
    public Marca buscar (int id) throws Exception{
        return marcaPersistencia.buscar(id);
     }

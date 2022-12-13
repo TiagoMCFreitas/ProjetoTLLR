@@ -78,6 +78,26 @@ public class CategoriaDao implements ICategoriaDao{
                 objetoCategoria.setDescricao(dados[1]);
                 objetoCategoria.setValorLocacao(Float.parseFloat(dados[2]));
                 if(id == objetoCategoria.getId()){
+                    br.close();
+                    return new Categoria(Integer.parseInt(dados[0]), dados[1], Float.parseFloat(dados[2]));
+                }
+        }
+        return null;
+    }
+    @Override
+    public Categoria buscarPorDesc(String desc) throws Exception {
+        ArrayList<Categoria> listaDeCategorias = new ArrayList<Categoria>();
+        FileReader fr = new FileReader(nomeDoArquivo);
+        BufferedReader br = new BufferedReader(fr);
+        String linha = "";
+        while((linha=br.readLine())!=null){
+                Categoria objetoCategoria = new Categoria();
+                String dados[]= linha.split(";");
+                objetoCategoria.setId(Integer.parseInt(dados[0]));
+                objetoCategoria.setDescricao(dados[1]);
+                objetoCategoria.setValorLocacao(Float.parseFloat(dados[2]));
+                if(desc.equals(objetoCategoria.getDescricao())){
+                    br.close();
                     return new Categoria(Integer.parseInt(dados[0]), dados[1], Float.parseFloat(dados[2]));
                 }
         }

@@ -103,7 +103,6 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabelBotaoBuscar.setBounds(670, 340, 93, 43);
 
         jLabelIdentificador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelIdentificador.setForeground(new java.awt.Color(0, 0, 0));
         jLabelIdentificador.setText("Identificador");
         jPanelfundo.add(jLabelIdentificador);
         jLabelIdentificador.setBounds(20, 142, 86, 20);
@@ -113,7 +112,11 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jPanelfundo.add(jTextFieldIdentificador);
         jTextFieldIdentificador.setBounds(20, 168, 107, 22);
 
-        jTextFieldDescricao.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescricaoActionPerformed(evt);
+            }
+        });
         jTextFieldDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextFieldDescricaoKeyReleased(evt);
@@ -128,7 +131,6 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabel2.setBounds(1622, 228, 123, 0);
 
         jLabelDescricao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelDescricao.setForeground(new java.awt.Color(0, 0, 0));
         jLabelDescricao.setText("Descrição");
         jPanelfundo.add(jLabelDescricao);
         jLabelDescricao.setBounds(139, 142, 65, 20);
@@ -153,7 +155,6 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabelBotaoIncluir.setBounds(20, 295, 90, 40);
 
         jLabelUrl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelUrl.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUrl.setText("URL");
         jPanelfundo.add(jLabelUrl);
         jLabelUrl.setBounds(20, 228, 26, 20);
@@ -272,7 +273,6 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
         jLabel3.setBounds(680, 200, 100, 100);
 
         jLabelLogo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabelLogo1.setForeground(new java.awt.Color(0, 0, 0));
         jLabelLogo1.setText("Logo");
         jPanelfundo.add(jLabelLogo1);
         jLabelLogo1.setBounds(700, 160, 60, 32);
@@ -338,15 +338,7 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldDescricaoKeyReleased
 
     private void jTextFieldDescricaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyTyped
-        char e = evt.getKeyChar();
-
-        if (!Character.isLetter(e)) {
-            evt.consume();
-        }
-
-        if (Character.isLowerCase(e)) {
-            evt.setKeyChar(Character.toUpperCase(e));
-        }
+        
     }//GEN-LAST:event_jTextFieldDescricaoKeyTyped
 
     private void jTextFieldUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUrlActionPerformed
@@ -423,6 +415,10 @@ public class TelaDeCadastroMarcas extends javax.swing.JInternalFrame {
        ImageIcon iconeAlterarMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoalterar.png");
         jLabelBotaoAlterar.setIcon(iconeAlterarMouse);
     }//GEN-LAST:event_jLabelBotaoAlterarMouseExited
+
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
 
     private void jLabelBotaoAlterarMouseClicked(java.awt.event.MouseEvent evt) {                                                
             try {

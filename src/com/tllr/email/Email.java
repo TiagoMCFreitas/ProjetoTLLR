@@ -34,7 +34,7 @@ props.put("mail.smtp.auth", "true");
       new javax.mail.Authenticator() {
            protected PasswordAuthentication getPasswordAuthentication()
            {
-                 return new PasswordAuthentication("apikey","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");
+                 return new PasswordAuthentication("apikey","*");
            }
       });
 

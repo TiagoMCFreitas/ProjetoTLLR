@@ -179,7 +179,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             Login objetoLogin = new Login(0, jTextField2.getText(), jPasswordField1.getText(),jTextField1.getText());
             loginControle.cadastrar(objetoLogin);
             this.dispose();
-            TesteDeLogin abrir = new TesteDeLogin();
+            TelaDeLogin abrir = new TelaDeLogin();
             abrir.setVisible(true);
             
         } catch (Exception ex) {

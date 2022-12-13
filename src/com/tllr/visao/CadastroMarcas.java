@@ -33,6 +33,7 @@ public class CadastroMarcas extends javax.swing.JFrame {
      
     public CadastroMarcas() {
         initComponents();
+       
         try{
         marcaControle.seNaoExistirArquivo();
         marcaControle.seNaoExistirId();
@@ -40,7 +41,7 @@ public class CadastroMarcas extends javax.swing.JFrame {
             
         }
         ImageIcon icon = new ImageIcon("./src/Imagens/ImageAnimacoes/marcaInclusao.gif");
-        jTextFieldIdentificador.setEnabled(false);
+        jTextFieldIdentificador.setEnabled(true);
         jTextFieldUrl.setEnabled(true);
         setLocationRelativeTo(null);
         try {
@@ -65,13 +66,10 @@ public class CadastroMarcas extends javax.swing.JFrame {
         jPanelfundo = new javax.swing.JPanel();
         jLabelBotaoBuscar = new javax.swing.JLabel();
         jLabelIdentificador = new javax.swing.JLabel();
-        jTextFieldIdentificador = new javax.swing.JTextField();
-        jTextFieldDescricao = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabelDescricao = new javax.swing.JLabel();
         jLabelBotaoIncluir = new javax.swing.JLabel();
         jLabelUrl = new javax.swing.JLabel();
-        jTextFieldUrl = new javax.swing.JTextField();
         jLabelLogo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableMarcas = new javax.swing.JTable();
@@ -85,14 +83,22 @@ public class CadastroMarcas extends javax.swing.JFrame {
         jLabelLogo1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jTextFieldDescricao = new javax.swing.JTextField();
+        jTextFieldIdentificador = new javax.swing.JTextField();
+        jTextFieldUrl = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        setAutoRequestFocus(false);
         setFocusTraversalPolicyProvider(true);
-        setFocusable(false);
         setResizable(false);
 
         jPanelfundo.setBackground(new java.awt.Color(153, 153, 153));
+        jPanelfundo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPanelfundoKeyTyped(evt);
+            }
+        });
         jPanelfundo.setLayout(null);
 
         jLabelBotaoBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -112,35 +118,19 @@ public class CadastroMarcas extends javax.swing.JFrame {
             }
         });
         jPanelfundo.add(jLabelBotaoBuscar);
-        jLabelBotaoBuscar.setBounds(670, 340, 93, 43);
+        jLabelBotaoBuscar.setBounds(550, 320, 93, 43);
 
         jLabelIdentificador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelIdentificador.setText("Identificador");
         jPanelfundo.add(jLabelIdentificador);
-        jLabelIdentificador.setBounds(20, 142, 86, 20);
-
-        jTextFieldIdentificador.setEditable(false);
-        jTextFieldIdentificador.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelfundo.add(jTextFieldIdentificador);
-        jTextFieldIdentificador.setBounds(20, 168, 107, 22);
-
-        jTextFieldDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldDescricaoKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldDescricaoKeyTyped(evt);
-            }
-        });
-        jPanelfundo.add(jTextFieldDescricao);
-        jTextFieldDescricao.setBounds(139, 168, 373, 22);
+        jLabelIdentificador.setBounds(30, 190, 86, 20);
         jPanelfundo.add(jLabel2);
         jLabel2.setBounds(1622, 228, 123, 0);
 
         jLabelDescricao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelDescricao.setText("Descrição");
         jPanelfundo.add(jLabelDescricao);
-        jLabelDescricao.setBounds(139, 142, 65, 20);
+        jLabelDescricao.setBounds(160, 190, 65, 20);
 
         jLabelBotaoIncluir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelBotaoIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/botao incluir normal.png"))); // NOI18N
@@ -159,26 +149,16 @@ public class CadastroMarcas extends javax.swing.JFrame {
             }
         });
         jPanelfundo.add(jLabelBotaoIncluir);
-        jLabelBotaoIncluir.setBounds(20, 295, 90, 40);
+        jLabelBotaoIncluir.setBounds(20, 320, 90, 40);
 
         jLabelUrl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelUrl.setText("URL");
         jPanelfundo.add(jLabelUrl);
-        jLabelUrl.setBounds(20, 228, 26, 20);
-
-        jTextFieldUrl.setEditable(false);
-        jTextFieldUrl.setBackground(new java.awt.Color(255, 255, 255));
-        jTextFieldUrl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUrlActionPerformed(evt);
-            }
-        });
-        jPanelfundo.add(jTextFieldUrl);
-        jTextFieldUrl.setBounds(20, 254, 492, 22);
+        jLabelUrl.setBounds(30, 250, 26, 20);
 
         jLabelLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanelfundo.add(jLabelLogo);
-        jLabelLogo.setBounds(680, 250, 70, 60);
+        jLabelLogo.setBounds(740, 210, 70, 60);
 
         jTableMarcas.setAutoCreateRowSorter(true);
         jTableMarcas.setModel(new javax.swing.table.DefaultTableModel(
@@ -210,7 +190,7 @@ public class CadastroMarcas extends javax.swing.JFrame {
         }
 
         jPanelfundo.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 380, 910, 200);
+        jScrollPane1.setBounds(0, 370, 910, 210);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("BOTÃO ALTERAR");
@@ -273,16 +253,16 @@ public class CadastroMarcas extends javax.swing.JFrame {
             }
         });
         jPanelfundo.add(jLabelBotaoAlterar);
-        jLabelBotaoAlterar.setBounds(128, 295, 90, 40);
+        jLabelBotaoAlterar.setBounds(130, 320, 90, 40);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/borda.png"))); // NOI18N
         jPanelfundo.add(jLabel3);
-        jLabel3.setBounds(670, 230, 100, 100);
+        jLabel3.setBounds(730, 190, 100, 100);
 
         jLabelLogo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo1.setText("Logo");
         jPanelfundo.add(jLabelLogo1);
-        jLabelLogo1.setBounds(690, 190, 60, 32);
+        jLabelLogo1.setBounds(750, 150, 60, 32);
 
         jButton2.setBackground(new java.awt.Color(21, 21, 88));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/curva-de-seta-apontando-para-a-esquerda.png"))); // NOI18N
@@ -293,7 +273,7 @@ public class CadastroMarcas extends javax.swing.JFrame {
             }
         });
         jPanelfundo.add(jButton2);
-        jButton2.setBounds(760, 140, 100, 30);
+        jButton2.setBounds(30, 140, 100, 30);
 
         jButton3.setBackground(new java.awt.Color(21, 21, 88));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/casa (1).png"))); // NOI18N
@@ -303,27 +283,55 @@ public class CadastroMarcas extends javax.swing.JFrame {
             }
         });
         jPanelfundo.add(jButton3);
-        jButton3.setBounds(870, 140, 30, 30);
+        jButton3.setBounds(140, 140, 30, 30);
+
+        jTextFieldDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDescricaoActionPerformed(evt);
+            }
+        });
+        jTextFieldDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDescricaoKeyTyped(evt);
+            }
+        });
+        jPanelfundo.add(jTextFieldDescricao);
+        jTextFieldDescricao.setBounds(160, 220, 380, 22);
+
+        jTextFieldIdentificador.setEditable(false);
+        jTextFieldIdentificador.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldIdentificador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanelfundo.add(jTextFieldIdentificador);
+        jTextFieldIdentificador.setBounds(30, 220, 107, 22);
+
+        jTextFieldUrl.setEditable(false);
+        jTextFieldUrl.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldUrl.setToolTipText("<html>\n<div><h3>Clique aqui, ou no botão buscar para escolher uma imagem</h3>\n</html>");
+        jTextFieldUrl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldUrlMouseClicked(evt);
+            }
+        });
+        jTextFieldUrl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUrlActionPerformed(evt);
+            }
+        });
+        jPanelfundo.add(jTextFieldUrl);
+        jTextFieldUrl.setBounds(30, 270, 506, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 920, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 5, Short.MAX_VALUE)
-                    .addComponent(jPanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 5, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelfundo, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanelfundo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
 
         pack();
@@ -388,22 +396,6 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
         jLabelBotaoBuscar.setIcon(iconeBuscarMouse);
     }//GEN-LAST:event_jLabelBotaoBuscarMouseExited
 
-    private void jTextFieldDescricaoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyReleased
-
-    }//GEN-LAST:event_jTextFieldDescricaoKeyReleased
-
-    private void jTextFieldDescricaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyTyped
-        char e = evt.getKeyChar();
-
-        if (!Character.isLetter(e)) {
-            evt.consume();
-        }
-
-        if (Character.isLowerCase(e)) {
-            evt.setKeyChar(Character.toUpperCase(e));
-        }
-    }//GEN-LAST:event_jTextFieldDescricaoKeyTyped
-
     private void jLabelBotaoIncluirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoIncluirMouseMoved
         jLabelBotaoIncluir.setCursor(new Cursor(Cursor.HAND_CURSOR));
         ImageIcon iconeIncluirMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirencima.png");
@@ -443,10 +435,6 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
         ImageIcon iconeIncluirMouse = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluir.png");
         jLabelBotaoIncluir.setIcon(iconeIncluirMouse);
     }//GEN-LAST:event_jLabelBotaoIncluirMouseExited
-
-    private void jTextFieldUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUrlActionPerformed
-
-    }//GEN-LAST:event_jTextFieldUrlActionPerformed
 
     private void jTableMarcasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMarcasMouseClicked
         jTextFieldIdentificador.setText(jTableMarcas.getValueAt(jTableMarcas.getSelectedRow(), 0).toString());
@@ -500,6 +488,53 @@ public void imprimirDadosNaGrid(ArrayList<Marca> listaDeMarcas) {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jPanelfundoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanelfundoKeyTyped
+        
+        
+    }//GEN-LAST:event_jPanelfundoKeyTyped
+
+    private void jTextFieldDescricaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyTyped
+        char e = evt.getKeyChar();
+
+        if (!Character.isLetter(e)) {
+            evt.consume();
+        }
+
+        if (Character.isLowerCase(e)) {
+            evt.setKeyChar(Character.toUpperCase(e));
+        }
+    }//GEN-LAST:event_jTextFieldDescricaoKeyTyped
+
+    private void jTextFieldUrlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldUrlMouseClicked
+        try {
+
+            JFileChooser fc = new JFileChooser("./src/Imagens/imagesModelo");
+            File workingDirectory = new File("./src/Imagens/imagesModelo");
+            fc.setCurrentDirectory(workingDirectory);
+            fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            fc.showOpenDialog(this);
+            File arquivologo = fc.getSelectedFile();
+            File arquivopasta = fc.getCurrentDirectory();
+            String nomeDoArquivo = "./src/Imagens/logos/";
+            String nomeFinal = nomeDoArquivo + arquivologo.getName();
+            jTextFieldUrl.setText(nomeFinal);
+            ImageIcon iconLogo = new ImageIcon(nomeDoArquivo +arquivopasta.getName()+"/"+ arquivologo.getName());
+            iconLogo.setImage(iconLogo.getImage().getScaledInstance(jLabelLogo.getWidth(), jLabelLogo.getHeight(), 1));
+            jLabelLogo.setIcon(iconLogo);
+
+        } catch (Exception erro) {
+            JOptionPane.showMessageDialog(this, "Nenhum arquivo selecionado");
+        }
+    }//GEN-LAST:event_jTextFieldUrlMouseClicked
+
+    private void jTextFieldUrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUrlActionPerformed
+
+    }//GEN-LAST:event_jTextFieldUrlActionPerformed
+
+    private void jTextFieldDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDescricaoActionPerformed
     Timer timer = new Timer(2500, new ActionListener(){
     public void actionPerformed(ActionEvent evt) {
         chamar.dispose();

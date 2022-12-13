@@ -53,6 +53,7 @@ public class InformarEmail extends javax.swing.JFrame {
         jLabelTitulo2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,13 +96,21 @@ public class InformarEmail extends javax.swing.JFrame {
 
         jLabelTitulo2.setBackground(new java.awt.Color(255, 255, 255));
         jLabelTitulo2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabelTitulo2.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTitulo2.setText("Insira seu email");
 
         jButton1.setText("Enviar código");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(21, 21, 88));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/curva-de-seta-apontando-para-a-esquerda.png"))); // NOI18N
+        jButton2.setText("Login");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -114,16 +123,23 @@ public class InformarEmail extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(131, 131, 131))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelTitulo2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelTitulo2)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 426, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton2)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addGap(9, 9, 9)
                 .addComponent(jLabelTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,7 +180,7 @@ props.put("mail.smtp.auth", "true");
       new javax.mail.Authenticator() {
            protected PasswordAuthentication getPasswordAuthentication()
            {
-                 return new PasswordAuthentication("apikey","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");
+                 return new PasswordAuthentication("apikey","*");
            }
       });
 
@@ -194,7 +210,7 @@ props.put("mail.smtp.auth", "true");
       
      
       message.setSubject("Codigo de verificacao de funcionario");//Assunto
-      message.setText("Este é o seu código gerado único de verificação de cadastramento! NÃO IRÁ FUNCIONAR NOVAMENTE" + "\n" + codigo.getCodigo());
+      message.setText("Este é o seu código gerado, único de verificação de cadastramento! NÃO IRÁ FUNCIONAR NOVAMENTE" + "\n" + codigo.getCodigo());
    
       Transport.send(message);
 
@@ -210,6 +226,12 @@ props.put("mail.smtp.auth", "true");
   
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        TelaDeLogin chamar = new TelaDeLogin();
+        chamar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,6 +270,7 @@ props.put("mail.smtp.auth", "true");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabelEmpresa2;
     private javax.swing.JLabel jLabelTitulo2;
     private javax.swing.JLabel jLabelTitulo3;

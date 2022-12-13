@@ -38,6 +38,7 @@ public class CadastroModelos extends javax.swing.JFrame {
     InclusaoModelos chamar = new InclusaoModelos(this, rootPaneCheckingEnabled);
     public CadastroModelos() {
         initComponents();
+    
         try{
             modeloControle.seNaoExistirArquivo();
             modeloControle.seNaoExistirId();
@@ -129,10 +130,6 @@ public class CadastroModelos extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
-        setFocusTraversalPolicyProvider(true);
-        setFocusable(false);
-        setResizable(false);
 
         jPanelFundo2.setBackground(new java.awt.Color(153, 153, 153));
         jPanelFundo2.setLayout(null);
@@ -216,12 +213,12 @@ public class CadastroModelos extends javax.swing.JFrame {
         jLabelLogo2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogo2.setText("Logo");
         jPanelFundo2.add(jLabelLogo2);
-        jLabelLogo2.setBounds(850, 190, 60, 32);
+        jLabelLogo2.setBounds(850, 150, 60, 32);
 
         jLabelModeloVeiculo4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelModeloVeiculo4.setText("Modelo Veículo");
         jPanelFundo2.add(jLabelModeloVeiculo4);
-        jLabelModeloVeiculo4.setBounds(560, 190, 180, 32);
+        jLabelModeloVeiculo4.setBounds(560, 150, 180, 32);
 
         jPanelTopo2.setBackground(new java.awt.Color(0, 0, 51));
 
@@ -257,20 +254,20 @@ public class CadastroModelos extends javax.swing.JFrame {
         jPanelFundo2.add(jPanelTopo2);
         jPanelTopo2.setBounds(0, 0, 950, 130);
         jPanelFundo2.add(jLabelModelo);
-        jLabelModelo.setBounds(590, 250, 140, 100);
+        jLabelModelo.setBounds(590, 210, 140, 100);
 
         jLabelBordaModelo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelBordaModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/bordamodelo.png"))); // NOI18N
         jPanelFundo2.add(jLabelBordaModelo);
-        jLabelBordaModelo.setBounds(540, 240, 230, 120);
+        jLabelBordaModelo.setBounds(540, 200, 230, 120);
 
         jLabelMarcaLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanelFundo2.add(jLabelMarcaLogo);
-        jLabelMarcaLogo.setBounds(840, 250, 70, 70);
+        jLabelMarcaLogo.setBounds(840, 210, 70, 70);
 
         jLabelBorda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Images/borda.png"))); // NOI18N
         jPanelFundo2.add(jLabelBorda1);
-        jLabelBorda1.setBounds(830, 240, 90, 90);
+        jLabelBorda1.setBounds(830, 200, 90, 90);
 
         jTableModelos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -305,21 +302,23 @@ public class CadastroModelos extends javax.swing.JFrame {
 
         jTextFieldIdentificador.setEditable(false);
         jTextFieldIdentificador.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldIdentificador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanelFundo2.add(jTextFieldIdentificador);
-        jTextFieldIdentificador.setBounds(20, 190, 107, 22);
+        jTextFieldIdentificador.setBounds(20, 210, 107, 22);
 
         jLabelIdentificador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelIdentificador.setText("Identificador");
         jPanelFundo2.add(jLabelIdentificador);
-        jLabelIdentificador.setBounds(20, 170, 86, 20);
+        jLabelIdentificador.setBounds(20, 190, 86, 20);
 
         jLabelDescricao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelDescricao.setText("Descrição");
         jPanelFundo2.add(jLabelDescricao);
-        jLabelDescricao.setBounds(150, 170, 92, 20);
+        jLabelDescricao.setBounds(150, 190, 92, 20);
 
         jTextFieldUrl.setEditable(false);
         jTextFieldUrl.setBackground(new java.awt.Color(255, 255, 255));
+        jTextFieldUrl.setToolTipText("<html> <div><h3>Clique aqui, ou no botão buscar para escolher uma imagem</h3> </html>");
         jTextFieldUrl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextFieldUrlMouseClicked(evt);
@@ -331,12 +330,12 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jTextFieldUrl);
-        jTextFieldUrl.setBounds(20, 240, 506, 22);
+        jTextFieldUrl.setBounds(20, 260, 506, 22);
 
         jLabelUrl.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelUrl.setText("URL");
         jPanelFundo2.add(jLabelUrl);
-        jLabelUrl.setBounds(20, 220, 26, 20);
+        jLabelUrl.setBounds(20, 240, 26, 20);
 
         jTextFieldDescricao.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -344,7 +343,7 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jTextFieldDescricao);
-        jTextFieldDescricao.setBounds(150, 190, 380, 22);
+        jTextFieldDescricao.setBounds(150, 210, 380, 22);
 
         jButton2.setBackground(new java.awt.Color(21, 21, 88));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/curva-de-seta-apontando-para-a-esquerda.png"))); // NOI18N
@@ -355,7 +354,7 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jButton2);
-        jButton2.setBounds(790, 140, 90, 30);
+        jButton2.setBounds(10, 140, 90, 30);
 
         jButton3.setBackground(new java.awt.Color(21, 21, 88));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ImageAnimacoes/casa (1).png"))); // NOI18N
@@ -365,27 +364,27 @@ public class CadastroModelos extends javax.swing.JFrame {
             }
         });
         jPanelFundo2.add(jButton3);
-        jButton3.setBounds(890, 140, 30, 30);
+        jButton3.setBounds(110, 140, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+            .addGap(0, 936, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelFundo2, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelFundo2, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
+            .addGap(0, 662, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 5, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelFundo2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 5, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -501,15 +500,17 @@ public class CadastroModelos extends javax.swing.JFrame {
     private void jLabelBotaoIncluir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoIncluir2MouseClicked
         ImageIcon iconlogo = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirclicado.png");
         jLabelBotaoIncluir2.setIcon(iconlogo);
-
+        String logo = "";
+        int idMarca = 0;
         try {
-
-            int idMarca = 0;
+            if(!"".equals(jTextFieldUrl.getText())){
+            idMarca = 0;
             File path = new File(jTextFieldUrl.getText());
             String string1 = jTextFieldUrl.getText();
             String[] result = string1.split("/");
           
-            String logo = "./src/Imagens/imagesModelo/" + result[4]+"/"+  path.getName(); 
+             logo = "./src/Imagens/imagesModelo/" + result[4]+"/"+  path.getName(); 
+            }
             Modelo objeto = new Modelo(0, jTextFieldDescricao.getText(), logo, objetoMarca.buscar(idMarca));
             ArrayList<Marca> lista = objetoMarca.listagem();
             for (int i = 0; i < lista.size(); i++) {
@@ -517,7 +518,7 @@ public class CadastroModelos extends javax.swing.JFrame {
                     objeto.setMarca(lista.get(i));
                 }
             }
-
+           
             modeloControle.nada(objeto);
             modeloControle.semFoto(objeto);
             modeloControle.mesmaFoto(objeto);
@@ -529,8 +530,10 @@ public class CadastroModelos extends javax.swing.JFrame {
             jTextFieldUrl.setText("");
             jLabelModelo.setIcon(null);
             imprimirDadosNaGrid(modeloControle.listagemModelo());
+            jTextFieldIdentificador.setText("");
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
+        
         }
     }//GEN-LAST:event_jLabelBotaoIncluir2MouseClicked
 

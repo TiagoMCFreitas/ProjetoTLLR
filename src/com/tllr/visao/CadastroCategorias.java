@@ -84,7 +84,7 @@ public class CadastroCategorias extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCategorias = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanelfundo.setBackground(new java.awt.Color(153, 153, 153));
         jPanelfundo.setLayout(null);
@@ -241,7 +241,15 @@ public class CadastroCategorias extends javax.swing.JFrame {
             new String [] {
                 "ID", "Descricao", "Valor"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jTableCategorias.setRowHeight(40);
         jTableCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -284,10 +292,6 @@ public class CadastroCategorias extends javax.swing.JFrame {
     private void jTextFieldDescricaoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDescricaoKeyTyped
         char e = evt.getKeyChar();
 
-        if (!Character.isLetter(e)) {
-            evt.consume();
-        }
-
         if (Character.isLowerCase(e)) {
             evt.setKeyChar(Character.toUpperCase(e));
         }
@@ -300,13 +304,17 @@ public class CadastroCategorias extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelBotaoIncluirMouseMoved
 
     private void jLabelBotaoIncluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBotaoIncluirMouseClicked
+        if(jTextFieldValor.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Campos Vazios");
+        }else{
         ImageIcon iconlogo = new ImageIcon("./src/Imagens/ImageAnimacoes/botaoincluirclicado.png");
         jLabelBotaoIncluir.setIcon(iconlogo);
         try {
             
             Categoria objeto = new Categoria(0,jTextFieldDescricao.getText(), Float.parseFloat(jTextFieldValor.getText()));
             
-
+            categoriaControle.nada(objeto);
+            categoriaControle.precoVazio(objeto);
             categoriaControle.incluir(objeto);
             jTextFieldDescricao.setText("");
             jTextFieldValor.setText("");
@@ -315,6 +323,7 @@ public class CadastroCategorias extends javax.swing.JFrame {
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(this, erro.getMessage());
+        }
         }
     }//GEN-LAST:event_jLabelBotaoIncluirMouseClicked
 

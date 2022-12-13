@@ -21,6 +21,6 @@ public interface IMarcaControle {
     ArrayList<Marca> listagem()throws Exception;
     Marca  buscar(int obj)throws Exception;
     void seNaoExistirArquivo()throws Exception;
-        void seNaoExistirId()throws Exception;
+    void seNaoExistirId()throws Exception;
 
 }

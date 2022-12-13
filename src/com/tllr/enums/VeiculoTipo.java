@@ -8,11 +8,11 @@ package com.tllr.enums;
  *
  * @author tiago
  */
-public enum TipoDoVeiculo {
+public enum VeiculoTipo {
     HATCH(1),SEDAN(2),SUV(3),PICKUP(4);
     
     public int valor;
-    private TipoDoVeiculo(int valorVeiculo){
+    private VeiculoTipo(int valorVeiculo){
         valor = valorVeiculo;
     }
 

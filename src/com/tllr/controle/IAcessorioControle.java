@@ -16,4 +16,6 @@ public interface IAcessorioControle {
     void alterar(Acessorio objeto)throws Exception;
     ArrayList<Acessorio> listagem()throws Exception;
     Acessorio buscar(int id)throws Exception;
+    void nada (Acessorio desc)throws Exception;
+    void precoVazio(Acessorio preco)throws Exception;
 }
